@@ -30,10 +30,7 @@ jobs:
         run: python scripts/build_patient_json.py
 
       - name: Commit generated assets
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/patient-data.json
-          git diff --cached --quiet && exit 0
-          git commit -m "Update patient JSON"
-          git push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'Auto-build patient JSON'
+          file_pattern: assets/patient-data.json
