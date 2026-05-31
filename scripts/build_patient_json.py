@@ -1,204 +1,145 @@
-import json
-import math
-import re
 from pathlib import Path
-
+import json
+import re
 import pandas as pd
 
-ROOT = Path('.').resolve()
+ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / 'assets'
 ASSETS.mkdir(exist_ok=True)
 
-PATIENT_XLSX = ROOT / 'patient.xlsx'
+CANDIDATES = [
+    'patient.xlsx',
+    'patient_data.xlsx',
+    'patient-data.xlsx',
+    'data.xlsx',
+]
+
+PATIENT_XLSX = None
+for name in CANDIDATES:
+    p = ROOT / name
+    if p.exists():
+        PATIENT_XLSX = p
+        break
+
+if PATIENT_XLSX is None:
+    found = sorted([p.name for p in ROOT.glob('*.xlsx')])
+    raise FileNotFoundError(
+        'Не найден Excel-файл пациента. Ищутся имена: '
+        + ', '.join(CANDIDATES)
+        + (f'. Найдены только: {", ".join(found)}' if found else '. В корне репозитория .xlsx файлов нет.')
+    )
 
 
-def clean_text(value):
-    if value is None:
-        return ''
-    if isinstance(value, float) and math.isnan(value):
-        return ''
-    text = str(value).replace('\xa0', ' ').strip()
-    return '' if text.lower() == 'nan' else text
+def norm_key(s):
+    s = '' if s is None else str(s)
+    s = s.strip().lower().replace('ё', 'е')
+    s = re.sub(r'\s+', ' ', s)
+    return s
 
 
-def clean_num(value):
-    if value is None:
+def slugify(s):
+    s = norm_key(s)
+    s = re.sub(r'[^a-zа-я0-9]+', '_', s)
+    return s.strip('_') or 'metric'
+
+
+def val(x):
+    if pd.isna(x):
         return None
-    if isinstance(value, float) and math.isnan(value):
-        return None
-    if isinstance(value, (int, float)):
-        return float(value)
-    text = clean_text(value).replace(',', '.')
-    m = re.fullmatch(r'-?\d+(?:\.\d+)?', text)
-    return float(text) if m else None
+    if isinstance(x, (pd.Timestamp,)):
+        return x.strftime('%Y-%m-%d')
+    if hasattr(x, 'item'):
+        try:
+            x = x.item()
+        except Exception:
+            pass
+    return x
 
 
-def to_iso_date(value):
-    text = clean_text(value)
-    if not text:
-        return ''
-    dt = pd.to_datetime(text, dayfirst=True, errors='coerce')
-    if pd.notna(dt):
-        return dt.strftime('%Y-%m-%d')
-    m = re.fullmatch(r'(\d{4})', text)
-    if m:
-        return f'{m.group(1)}-01-01'
-    return text
-
-
-def normalize_marker(value):
-    text = clean_text(value)
-    text = re.sub(r'\s+', ' ', text)
-    return text.strip(' .,-')
-
-
-def marker_slug(value):
-    text = normalize_marker(value).lower()
-    text = text.replace('25-oh', '25 oh').replace('hs-crp', 'hs crp')
-    text = re.sub(r'[^a-zа-я0-9]+', '_', text, flags=re.IGNORECASE)
-    return text.strip('_')
-
-
-def parse_reference(ref_text):
-    text = clean_text(ref_text)
-    if not text:
-        return None, None, ''
-    normalized = text.replace('–', '-').replace('—', '-').replace(',', '.')
-    normalized = re.sub(r'\s+', ' ', normalized).strip()
-    m = re.fullmatch(r'(-?\d+(?:\.\d+)?)\s*-\s*(-?\d+(?:\.\d+)?)', normalized)
-    if m:
-        return float(m.group(1)), float(m.group(2)), text
-    m = re.fullmatch(r'(-?\d+(?:\.\d+)?)', normalized)
-    if m:
-        return None, float(m.group(1)), text
-    m = re.search(r'(-?\d+(?:\.\d+)?)\s*-\s*(-?\d+(?:\.\d+)?)', normalized)
-    if m and normalized.count('-') == 1:
-        return float(m.group(1)), float(m.group(2)), text
-    return None, None, text
+def find_sheet(xls, wants):
+    names = list(xls.sheet_names)
+    normalized = {name: norm_key(name) for name in names}
+    for want in wants:
+        w = norm_key(want)
+        for original, n in normalized.items():
+            if n == w or w in n:
+                return original
+    return names[0] if names else None
 
 
 xls = pd.ExcelFile(PATIENT_XLSX)
+sheet = find_sheet(xls, ['data', 'данные', 'labs', 'анализы', 'sheet1'])
+df = pd.read_excel(PATIENT_XLSX, sheet_name=sheet)
+df.columns = [norm_key(c) for c in df.columns]
 
-passport = pd.read_excel(xls, sheet_name='passport').fillna('')
-diagnoses = pd.read_excel(xls, sheet_name='diagnoses').fillna('')
-labs = pd.read_excel(xls, sheet_name='labsfull').fillna('')
-vitals = pd.read_excel(xls, sheet_name='vitals').fillna('')
-studies = pd.read_excel(xls, sheet_name='studies').fillna('')
-therapy = pd.read_excel(xls, sheet_name='therapyplan').fillna('')
-
-passport_info = {}
-if not passport.empty:
-    row = passport.iloc[0].to_dict()
-    passport_info = {str(k): clean_text(v) for k, v in row.items() if clean_text(v)}
-
-lab_rows = []
-metric_map = {}
-for _, row in labs.iterrows():
-    marker = normalize_marker(row.get('marker', ''))
-    result = clean_num(row.get('result'))
-    date_iso = to_iso_date(row.get('date'))
-    ref_text = clean_text(row.get('reference'))
-    if not marker or result is None or not date_iso:
-        continue
-    lower_ref, upper_ref, reference_text = parse_reference(ref_text)
-    item = {
-        'date': date_iso,
-        'section': clean_text(row.get('section')),
-        'marker': marker,
-        'marker_key': marker_slug(marker),
-        'result': result,
-        'unit': clean_text(row.get('unit')),
-        'reference_text': reference_text,
-        'lower_ref': lower_ref,
-        'upper_ref': upper_ref,
-        'assessment': clean_text(row.get('assessment')),
-        'trend': clean_text(row.get('trend')),
-        'clinical_note': clean_text(row.get('clinicalnote')),
-        'source_sheet': 'labsfull'
-    }
-    lab_rows.append(item)
-    mk = item['marker_key']
-    metric_map.setdefault(mk, {
-        'key': mk,
-        'label': marker,
-        'unit': item['unit'],
-        'group': clean_text(row.get('section')) or 'Другое',
-        'reference_text': reference_text,
-        'lower_ref': lower_ref,
-        'upper_ref': upper_ref
-    })
-    if reference_text and not metric_map[mk].get('reference_text'):
-        metric_map[mk]['reference_text'] = reference_text
-    if lower_ref is not None and metric_map[mk].get('lower_ref') is None:
-        metric_map[mk]['lower_ref'] = lower_ref
-    if upper_ref is not None and metric_map[mk].get('upper_ref') is None:
-        metric_map[mk]['upper_ref'] = upper_ref
-
-vitals_map = {
-    'weightkg': ('weightkg', 'Вес', 'kg', 'Витальные'),
-    'sbp': ('sbp', 'САД', 'mmHg', 'Витальные'),
-    'dbp': ('dbp', 'ДАД', 'mmHg', 'Витальные'),
-    'pulse': ('pulse', 'Пульс', 'bpm', 'Витальные'),
+col_map = {
+    'date': ['date', 'дата'],
+    'section': ['section', 'group', 'группа', 'раздел'],
+    'marker': ['marker', 'metric', 'name', 'показатель', 'анализ'],
+    'result': ['result', 'value', 'результат', 'значение'],
+    'unit': ['unit', 'units', 'ед', 'ед.', 'unit_name'],
+    'lower_ref': ['lower_ref', 'ref_low', 'нижняя граница', 'нижняя_граница', 'min'],
+    'upper_ref': ['upper_ref', 'ref_high', 'верхняя граница', 'верхняя_граница', 'max'],
+    'reference_text': ['reference_text', 'reference', 'референс', 'референсные значения', 'норма'],
+    'clinical_note': ['clinical_note', 'comment', 'комментарий', 'заметка', 'assessment', 'trend'],
 }
-for _, row in vitals.iterrows():
-    date_iso = to_iso_date(row.get('date'))
-    if not date_iso:
-        continue
-    for col, meta in vitals_map.items():
-        val = clean_num(row.get(col))
-        if val is None:
-            continue
-        key, label, unit, group = meta
-        item = {
-            'date': date_iso,
-            'section': group,
-            'marker': label,
-            'marker_key': key,
-            'result': val,
-            'unit': unit,
-            'reference_text': '',
-            'lower_ref': None,
-            'upper_ref': None,
-            'assessment': '',
-            'trend': '',
-            'clinical_note': clean_text(row.get('comment')),
-            'source_sheet': 'vitals'
-        }
-        lab_rows.append(item)
-        metric_map.setdefault(key, {
-            'key': key,
-            'label': label,
-            'unit': unit,
-            'group': group,
-            'reference_text': '',
-            'lower_ref': None,
-            'upper_ref': None
-        })
 
-lab_rows = sorted(lab_rows, key=lambda x: (x['marker_key'], x['date']))
-metrics = sorted(metric_map.values(), key=lambda x: (x['group'], x['label']))
+resolved = {}
+for target, variants in col_map.items():
+    resolved[target] = None
+    for variant in variants:
+      nv = norm_key(variant)
+      for col in df.columns:
+        if col == nv:
+          resolved[target] = col
+          break
+      if resolved[target]:
+        break
+
+records = []
+for _, row in df.iterrows():
+    marker = val(row.get(resolved['marker'])) if resolved['marker'] else None
+    if not marker:
+        continue
+    section = val(row.get(resolved['section'])) if resolved['section'] else None
+    marker_key = slugify(f"{section or ''}_{marker}")
+    date_val = val(row.get(resolved['date'])) if resolved['date'] else None
+    if isinstance(date_val, str):
+        try:
+            date_val = pd.to_datetime(date_val).strftime('%Y-%m-%d')
+        except Exception:
+            pass
+    rec = {
+        'date': date_val,
+        'section': section,
+        'group': section,
+        'marker': marker,
+        'marker_key': marker_key,
+        'result': val(row.get(resolved['result'])) if resolved['result'] else None,
+        'unit': val(row.get(resolved['unit'])) if resolved['unit'] else None,
+        'lower_ref': val(row.get(resolved['lower_ref'])) if resolved['lower_ref'] else None,
+        'upper_ref': val(row.get(resolved['upper_ref'])) if resolved['upper_ref'] else None,
+        'reference_text': val(row.get(resolved['reference_text'])) if resolved['reference_text'] else None,
+        'clinical_note': val(row.get(resolved['clinical_note'])) if resolved['clinical_note'] else None,
+    }
+    records.append(rec)
+
+metrics_map = {}
+for r in records:
+    if r['marker_key'] not in metrics_map:
+        metrics_map[r['marker_key']] = {
+            'key': r['marker_key'],
+            'label': r['marker'],
+            'group': r['group'],
+        }
 
 payload = {
-    'generated_at': pd.Timestamp.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ'),
-    'patient': passport_info,
-    'diagnoses': [
-        {k: clean_text(v) for k, v in row.items() if clean_text(v)}
-        for _, row in diagnoses.iterrows()
-        if any(clean_text(v) for v in row.values)
-    ],
-    'studies': [
-        {k: clean_text(v) for k, v in row.items() if clean_text(v)}
-        for _, row in studies.iterrows()
-        if any(clean_text(v) for v in row.values)
-    ],
-    'therapy': [
-        {k: clean_text(v) for k, v in row.items() if clean_text(v)}
-        for _, row in therapy.iterrows()
-        if any(clean_text(v) for v in row.values)
-    ],
-    'metrics': metrics,
-    'labs': lab_rows,
+    'patient': {},
+    'diagnoses': [],
+    'therapy': [],
+    'metrics': list(metrics_map.values()),
+    'labs': records,
 }
 
 (ASSETS / 'patient-data.json').write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding='utf-8')
-print('written assets/patient-data.json')
+print(f'Built {ASSETS / "patient-data.json"} from {PATIENT_XLSX.name}')
