@@ -1,49 +1,217 @@
 {
-  "patient": {
-    "Поле 1": "Цифровой регистр пациента",
-    "Поле 2": "Версия от 21.05.2026",
-    "Поле 3": "Пациент: Аноним",
-    "Поле 4": "Дата рождения: 23.09.1963",
-    "Поле 5": "Возраст: 62 года",
-    "Поле 6": "Пол: мужской",
-    "Поле 7": "Дата составления: May-26"
+  "passport_raw": [
+    "passport",
+    "Цифровой регистр пациента",
+    "Версия от 21.05.2026",
+    "Пациент: Аноним",
+    "Дата рождения: 23.09.1963",
+    "Возраст: 62 года",
+    "Пол: мужской",
+    "Дата составления: May-26"
+  ],
+  "passport": {
+    "Пациент": "Аноним",
+    "Дата рождения": "23.09.1963",
+    "Возраст": "62 года",
+    "Пол": "мужской",
+    "Дата составления": "May-26"
   },
   "diagnoses": [
+    "Гипертоническая болезнь 2 стадии, артериальная гипертензия 2 степени, риск 4",
+    "Мультифокальный атеросклероз (коронарные артерии, БЦА, артерии нижних конечностей)",
+    "Дислипидемия; на фоне комбинированной липидной терапии цели по ОХС и индексу атерогенности достигнуты",
+    "Генотип APOE E3/E4 (носительство)",
+    "Нарушение толерантности к глюкозе / предиабет; HbA1c 6.10% на 11.05.2026",
+    "Абдоминальное ожирение; метаболически ассоциированная жировая болезнь печени",
+    "Хронический бронхит",
+    "Хроническая ЛОР-патология: кистозно-полипозная трансформация околоносовых пазух, состояние после радикальных операций на пазухах",
+    "B12-дефицитная анемия в анамнезе, латентный железодефицит",
+    "Андрологический комплекс: состояние после правосторонней орхиэктомии, гипергонадотропное состояние, эректильная дисфункция, никтурия",
+    "Офтальмология: артифакия обоих глаз, состояние после лазеркоагуляции/витрэктомии",
+    "Дегенеративные изменения позвоночника, плоскостопие, вальгусная деформация стоп"
+  ],
+  "studies": [
     {
-      "diagnosis": "Гипертоническая болезнь 2 стадии, артериальная гипертензия 2 степени, риск 4"
+      "date": "2011",
+      "section": "Инструментальная диагностика",
+      "study": "КАГ (Израиль)",
+      "area": "Коронарные артерии",
+      "conclusion": "Некритический стеноз ПМЖВ"
     },
     {
-      "diagnosis": "Мультифокальный атеросклероз (коронарные артерии, БЦА, артерии нижних конечностей)"
+      "date": "2011",
+      "section": "Инструментальная диагностика",
+      "study": "SPECT",
+      "area": "Миокард",
+      "conclusion": "Слабо положительный (подозрение на ишемию)"
     },
     {
-      "diagnosis": "Дислипидемия; на фоне комбинированной липидной терапии цели по ОХС и индексу атерогенности достигнуты"
+      "date": "2011",
+      "section": "Инструментальная диагностика",
+      "study": "ЭхоКГ",
+      "area": "Сердце",
+      "conclusion": "Незначительная гипертрофия МЖП; ФВ ЛЖ 60%"
     },
     {
-      "diagnosis": "Генотип APOE E3/E4 (носительство)"
+      "date": "02.10.2011",
+      "section": "Инструментальная диагностика",
+      "study": "УЗИ мошонки",
+      "area": "Мошонка",
+      "conclusion": "Правое яичко удалено; левое без патологии; варикоцеле слева"
     },
     {
-      "diagnosis": "Нарушение толерантности к глюкозе / предиабет; HbA1c 6.10% на 11.05.2026"
+      "date": "03.10.2011",
+      "section": "Инструментальная диагностика",
+      "study": "SPECT с талием",
+      "area": "Сердце",
+      "conclusion": "LVEF после нагрузки 50%; подозрение на ишемию малого размера"
     },
     {
-      "diagnosis": "Абдоминальное ожирение; метаболически ассоциированная жировая болезнь печени"
+      "date": "04.10.2011",
+      "section": "Инструментальная диагностика",
+      "study": "ЭхоКГ",
+      "area": "Сердце",
+      "conclusion": "Минимальная недостаточность ТК; LVEF 60%"
     },
     {
-      "diagnosis": "Хронический бронхит"
+      "date": "04.10.2011",
+      "section": "Инструментальная диагностика",
+      "study": "КТ грудной клетки",
+      "area": "Грудная клетка",
+      "conclusion": "Норма"
     },
     {
-      "diagnosis": "Хроническая ЛОР-патология: кистозно-полипозная трансформация околоносовых пазух, состояние после радикальных операций на пазухах"
+      "date": "09.10.2011",
+      "section": "Инструментальная диагностика",
+      "study": "Коронарная ангиография",
+      "area": "Коронарные артерии",
+      "conclusion": "Некритический стеноз ПМЖВ в средней части"
     },
     {
-      "diagnosis": "B12-дефицитная анемия в анамнезе, латентный железодефицит"
+      "date": "09.10.2011",
+      "section": "Инструментальная диагностика",
+      "study": "МРТ позвоночника",
+      "area": "Позвоночник",
+      "conclusion": "Грыжи шейного, грудного и поясничного отделов"
     },
     {
-      "diagnosis": "Андрологический комплекс: состояние после правосторонней орхиэктомии, гипергонадотропное состояние, эректильная дисфункция, никтурия"
+      "date": "2013",
+      "section": "Инструментальная диагностика",
+      "study": "КАГ повтор",
+      "area": "Коронарные артерии",
+      "conclusion": "ПМЖВ до 40%"
     },
     {
-      "diagnosis": "Офтальмология: артифакия обоих глаз, состояние после лазеркоагуляции/витрэктомии"
+      "date": "25.04.2018",
+      "section": "Инструментальная диагностика",
+      "study": "ЭГДС",
+      "area": "ЖКТ",
+      "conclusion": "Рефлюкс-эзофагит, гастрит"
     },
     {
-      "diagnosis": "Дегенеративные изменения позвоночника, плоскостопие, вальгусная деформация стоп"
+      "date": "25.04.2018",
+      "section": "Инструментальная диагностика",
+      "study": "Колоноскопия",
+      "area": "Толстая кишка",
+      "conclusion": "Без органической патологии, долихосигма"
+    },
+    {
+      "date": "25.04.2018",
+      "section": "Инструментальная диагностика",
+      "study": "УЗИ ОБП",
+      "area": "Печень/желчный/ПЖЖ",
+      "conclusion": "Жировой гепатоз, гемангиомы печени, липоматоз ПЖЖ"
+    },
+    {
+      "date": "26.04.2018",
+      "section": "Инструментальная диагностика",
+      "study": "МСКТ ОГК",
+      "area": "Органы грудной клетки",
+      "conclusion": "Кальциноз левой коронарной артерии, кальциноз аорты"
+    },
+    {
+      "date": "26.04.2018",
+      "section": "Инструментальная диагностика",
+      "study": "МСКТ околоносовых пазух",
+      "area": "ЛОР",
+      "conclusion": "Кистозно-полипозная трансформация слизистой пазух"
+    },
+    {
+      "date": "26.04.2018",
+      "section": "Инструментальная диагностика",
+      "study": "МРТ головного мозга",
+      "area": "Головной мозг",
+      "conclusion": "Очагово-дистрофические изменения, лейкоареоз"
+    },
+    {
+      "date": "2020",
+      "section": "Инструментальная диагностика",
+      "study": "УЗДГ БЦА",
+      "area": "Сонные артерии",
+      "conclusion": "Атеросклероз, стеноз устья ВСА слева до 20%"
+    },
+    {
+      "date": "2020",
+      "section": "Инструментальная диагностика",
+      "study": "ЭхоКГ",
+      "area": "Сердце",
+      "conclusion": "ФВ ЛЖ 60%; диастолическая дисфункция 1 типа"
+    },
+    {
+      "date": "2020",
+      "section": "Инструментальная диагностика",
+      "study": "Тредмил-тест",
+      "area": "Сердце",
+      "conclusion": "Отрицательный, 13.4 MET"
+    },
+    {
+      "date": "21.09.2020",
+      "section": "Инструментальная диагностика",
+      "study": "УЗИ + ТРУЗИ",
+      "area": "Мошонка/простата",
+      "conclusion": "Правое яичко отсутствует; хронический калькулезный простатит"
+    },
+    {
+      "date": "2022",
+      "section": "Инструментальная диагностика",
+      "study": "CT-angio / CAC",
+      "area": "Коронарные артерии",
+      "conclusion": "CAC 596"
+    },
+    {
+      "date": "31.10.2023",
+      "section": "Инструментальная диагностика",
+      "study": "ЭхоКГ",
+      "area": "Сердце",
+      "conclusion": "Динамика ФВ и камер сердца по сводке"
+    },
+    {
+      "date": "2024",
+      "section": "Инструментальная диагностика",
+      "study": "Колоноскопия",
+      "area": "Толстая кишка",
+      "conclusion": "Контроль после выявленных изменений"
+    },
+    {
+      "date": "10.12.2025",
+      "section": "Инструментальная диагностика",
+      "study": "DXA",
+      "area": "Костная ткань/композиция тела",
+      "conclusion": "% жира 29.3; висцеральный жир 1580 г; остеопения"
+    },
+    {
+      "date": "25.03.2026",
+      "section": "Инструментальная диагностика",
+      "study": "CT-angio / CAC",
+      "area": "Коронарные артерии",
+      "conclusion": "CAC 794; ПМЖВ до 70% по сводке"
+    },
+    {
+      "date": "14.05.2026",
+      "section": "Инструментальная диагностика",
+      "study": "Колоноскопия",
+      "area": "Толстая кишка",
+      "conclusion": "Образование 6 мм, 0-IIa, NICE I-II, наблюдение"
     }
   ],
   "therapy": [
@@ -86,2409 +254,2547 @@
       "date": "25.03.2026",
       "intervention": "Контроль HbA1c",
       "dose": "через 3 мес",
+      "schedule": null,
       "comment": "мониторинг углеводного обмена"
     },
     {
       "date": "14.05.2026",
       "intervention": "Наблюдение после колоноскопии",
       "dose": "1-3 года",
+      "schedule": null,
       "comment": "контрольный интервал"
     }
   ],
-  "metrics": [
-    {
-      "key": "липиды_общий_холестерин",
-      "label": "Общий холестерин",
-      "group": "Липиды"
-    },
-    {
-      "key": "липиды_лпвп",
-      "label": "ЛПВП",
-      "group": "Липиды"
-    },
-    {
-      "key": "липиды_триглицериды",
-      "label": "Триглицериды",
-      "group": "Липиды"
-    },
-    {
-      "key": "липиды_лпнп_расчетный_по_фридевальду",
-      "label": "ЛПНП (расчетный по Фридевальду)",
-      "group": "Липиды"
-    },
-    {
-      "key": "липиды_индекс_атерогенности",
-      "label": "Индекс атерогенности",
-      "group": "Липиды"
-    },
-    {
-      "key": "прочее_hs_crp",
-      "label": "hs-CRP",
-      "group": "Прочее"
-    },
-    {
-      "key": "гематология_hba1c",
-      "label": "HbA1c",
-      "group": "Гематология"
-    },
-    {
-      "key": "прочее_homa_ir",
-      "label": "HOMA-IR",
-      "group": "Прочее"
-    },
-    {
-      "key": "биохимия_креатинин",
-      "label": "Креатинин",
-      "group": "Биохимия"
-    },
-    {
-      "key": "биохимия_алт",
-      "label": "АЛТ",
-      "group": "Биохимия"
-    },
-    {
-      "key": "биохимия_аст",
-      "label": "АСТ",
-      "group": "Биохимия"
-    },
-    {
-      "key": "биохимия_кфк",
-      "label": "КФК",
-      "group": "Биохимия"
-    },
-    {
-      "key": "витамины_микроэлементы_витамин_d_25_oh",
-      "label": "Витамин D (25-OH)",
-      "group": "Витамины/микроэлементы"
-    },
-    {
-      "key": "гормоны_тестостерон_общий",
-      "label": "Тестостерон общий",
-      "group": "Гормоны"
-    },
-    {
-      "key": "гормоны_тестостерон_свободный",
-      "label": "Тестостерон свободный",
-      "group": "Гормоны"
-    },
-    {
-      "key": "гормоны_фсг",
-      "label": "ФСГ",
-      "group": "Гормоны"
-    },
-    {
-      "key": "гормоны_лг",
-      "label": "ЛГ",
-      "group": "Гормоны"
-    },
-    {
-      "key": "витальные_рост",
-      "label": "Рост",
-      "group": "Витальные"
-    },
-    {
-      "key": "витальные_вес",
-      "label": "Вес",
-      "group": "Витальные"
-    },
-    {
-      "key": "прочее_имт",
-      "label": "ИМТ",
-      "group": "Прочее"
-    },
-    {
-      "key": "витальные_ад_систолическое",
-      "label": "АД систолическое",
-      "group": "Витальные"
-    },
-    {
-      "key": "витальные_ад_диастолическое",
-      "label": "АД диастолическое",
-      "group": "Витальные"
-    },
-    {
-      "key": "витальные_пульс",
-      "label": "Пульс",
-      "group": "Витальные"
-    },
-    {
-      "key": "липиды_лпнп",
-      "label": "ЛПНП",
-      "group": "Липиды"
-    },
-    {
-      "key": "гематология_гликированный_гемоглобин",
-      "label": "Гликированный гемоглобин",
-      "group": "Гематология"
-    },
-    {
-      "key": "биохимия_глюкоза",
-      "label": "Глюкоза",
-      "group": "Биохимия"
-    }
-  ],
-  "labs": [
+  "rows": [
     {
       "date": "2026-05-11",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Общий холестерин",
-      "marker_key": "липиды_общий_холестерин",
-      "result": 2.56,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "цель достигнута"
+      "value": 2.56,
+      "unit": null,
+      "reference": "<5",
+      "comment": "цель достигнута"
     },
     {
       "date": "2026-05-11",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПВП",
-      "marker_key": "липиды_лпвп",
-      "result": 0.85,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "ниже целевого, фактор риска"
+      "value": 0.85,
+      "unit": null,
+      "reference": ">1",
+      "comment": "ниже целевого, фактор риска"
     },
     {
       "date": "2026-05-11",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Триглицериды",
-      "marker_key": "липиды_триглицериды",
-      "result": 0.83,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "норма"
+      "value": 0.83,
+      "unit": null,
+      "reference": "<1,7",
+      "comment": "норма"
     },
     {
       "date": "2026-05-11",
-      "section": "Липиды",
       "group": "Липиды",
-      "marker": "ЛПНП (расчетный по Фридевальду)",
-      "marker_key": "липиды_лпнп_расчетный_по_фридевальду",
-      "result": 1.33,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "на границе цели <1.4"
+      "marker": "ЛПНП",
+      "value": 1.33,
+      "unit": null,
+      "reference": "<1,4",
+      "comment": "на границе цели <1.4"
     },
     {
       "date": "2026-05-11",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Индекс атерогенности",
-      "marker_key": "липиды_индекс_атерогенности",
-      "result": 2.01,
-      "unit": "у.е.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "норма"
+      "value": 2.01,
+      "unit": null,
+      "reference": "<3,5",
+      "comment": "норма"
     },
     {
       "date": "2026-05-11",
-      "section": "Прочее",
       "group": "Прочее",
       "marker": "hs-CRP",
-      "marker_key": "прочее_hs_crp",
-      "result": 0.32,
-      "unit": "мг/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "низкий воспалительный фон"
+      "value": 0.32,
+      "unit": null,
+      "reference": "<1",
+      "comment": "низкий воспалительный фон"
     },
     {
       "date": "2026-05-11",
-      "section": "Гематология",
       "group": "Гематология",
-      "marker": "HbA1c",
-      "marker_key": "гематология_hba1c",
-      "result": 6.1,
-      "unit": "%",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "сохраняется предиабет"
+      "marker": "Гликированный гемоглобин",
+      "value": 6.1,
+      "unit": null,
+      "reference": "4,27-6,07",
+      "comment": "сохраняется предиабет"
     },
     {
       "date": "2026-05-11",
-      "section": "Прочее",
       "group": "Прочее",
       "marker": "HOMA-IR",
-      "marker_key": "прочее_homa_ir",
-      "result": 1.2,
-      "unit": "у.е.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "норма"
+      "value": 1.2,
+      "unit": null,
+      "reference": "0-2,77",
+      "comment": "норма"
     },
     {
       "date": "2026-05-11",
-      "section": "Биохимия",
       "group": "Биохимия",
       "marker": "Креатинин",
-      "marker_key": "биохимия_креатинин",
-      "result": 76.0,
-      "unit": "мкмоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "норма"
+      "value": 76.0,
+      "unit": null,
+      "reference": "72-127",
+      "comment": "норма"
     },
     {
       "date": "2026-05-11",
-      "section": "Биохимия",
       "group": "Биохимия",
       "marker": "АЛТ",
-      "marker_key": "биохимия_алт",
-      "result": 16.3,
-      "unit": "Ед/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "норма"
+      "value": 16.3,
+      "unit": null,
+      "reference": "<50",
+      "comment": "норма"
     },
     {
       "date": "2026-05-11",
-      "section": "Биохимия",
       "group": "Биохимия",
       "marker": "АСТ",
-      "marker_key": "биохимия_аст",
-      "result": 23.0,
-      "unit": "Ед/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "норма"
+      "value": 23.0,
+      "unit": null,
+      "reference": "<50",
+      "comment": "норма"
     },
     {
       "date": "2026-05-11",
-      "section": "Биохимия",
       "group": "Биохимия",
       "marker": "КФК",
-      "marker_key": "биохимия_кфк",
-      "result": 119.9,
-      "unit": "Ед/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "норма"
+      "value": 119.9,
+      "unit": null,
+      "reference": "<171",
+      "comment": "норма"
     },
     {
       "date": "2026-05-11",
-      "section": "Витамины/микроэлементы",
       "group": "Витамины/микроэлементы",
       "marker": "Витамин D (25-OH)",
-      "marker_key": "витамины_микроэлементы_витамин_d_25_oh",
-      "result": 53.6,
-      "unit": "нг/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "целевой уровень"
+      "value": 53.6,
+      "unit": null,
+      "reference": "30-100",
+      "comment": "целевой уровень"
     },
     {
       "date": "2026-05-11",
-      "section": "Гормоны",
       "group": "Гормоны",
       "marker": "Тестостерон общий",
-      "marker_key": "гормоны_тестостерон_общий",
-      "result": 8.6,
-      "unit": "нмоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "ниже диагностического порога"
+      "value": 8.6,
+      "unit": null,
+      "reference": "7,66-24,8",
+      "comment": "ниже диагностического порога"
     },
     {
       "date": "2026-05-11",
-      "section": "Гормоны",
       "group": "Гормоны",
       "marker": "Тестостерон свободный",
-      "marker_key": "гормоны_тестостерон_свободный",
-      "result": 164.76,
-      "unit": "пмоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "ниже референса"
+      "value": 164.76,
+      "unit": null,
+      "reference": "170-660",
+      "comment": "ниже референса"
     },
     {
       "date": "2026-05-11",
-      "section": "Гормоны",
       "group": "Гормоны",
       "marker": "ФСГ",
-      "marker_key": "гормоны_фсг",
-      "result": 33.42,
-      "unit": "мМЕ/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "повышен"
+      "value": 33.42,
+      "unit": null,
+      "reference": "1,5-12,4",
+      "comment": "повышен"
     },
     {
       "date": "2026-05-11",
-      "section": "Гормоны",
       "group": "Гормоны",
       "marker": "ЛГ",
-      "marker_key": "гормоны_лг",
-      "result": 9.3,
-      "unit": "мМЕ/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "повышен"
+      "value": 9.3,
+      "unit": null,
+      "reference": "1,7-8,6",
+      "comment": "повышен"
     },
     {
       "date": "2026-05-11",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Рост",
-      "marker_key": "витальные_рост",
-      "result": 193.0,
-      "unit": "см",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 193.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2026-05-11",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 110.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 110.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2026-05-11",
-      "section": "Прочее",
       "group": "Прочее",
       "marker": "ИМТ",
-      "marker_key": "прочее_имт",
-      "result": 29.5,
-      "unit": "кг/м2",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "избыток массы тела"
+      "value": 29.5,
+      "unit": null,
+      "reference": null,
+      "comment": "избыток массы тела"
     },
     {
       "date": "2011-10-03",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 125.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "SPECT покой; на нагрузке АД 130/80, пульс 159 (92%)"
+      "value": 125.0,
+      "unit": null,
+      "reference": null,
+      "comment": "SPECT покой; на нагрузке АД 130/80, пульс 159 (92%)"
     },
     {
       "date": "2011-10-03",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД диастолическое",
-      "marker_key": "витальные_ад_диастолическое",
-      "result": 80.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "SPECT покой; на нагрузке АД 130/80, пульс 159 (92%)"
+      "value": 80.0,
+      "unit": null,
+      "reference": null,
+      "comment": "SPECT покой; на нагрузке АД 130/80, пульс 159 (92%)"
     },
     {
       "date": "2011-10-03",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 79.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "SPECT покой; на нагрузке АД 130/80, пульс 159 (92%)"
+      "value": 79.0,
+      "unit": null,
+      "reference": null,
+      "comment": "SPECT покой; на нагрузке АД 130/80, пульс 159 (92%)"
     },
     {
       "date": "2020-02-03",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 110.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Вес 110 кг, рост 194 см; ИМТ 29"
+      "value": 110.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Вес 110 кг, рост 194 см; ИМТ 29"
     },
     {
       "date": "2020-02-03",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Рост",
-      "marker_key": "витальные_рост",
-      "result": 1.94,
-      "unit": "м",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Вес 110 кг, рост 194 см; ИМТ 29"
+      "value": 1.94,
+      "unit": null,
+      "reference": null,
+      "comment": "Вес 110 кг, рост 194 см; ИМТ 29"
     },
     {
       "date": "2020-09-26",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 116.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Рост 194 см, вес 116 кг, ИМТ 30.8"
+      "value": 116.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Рост 194 см, вес 116 кг, ИМТ 30.8"
     },
     {
       "date": "2020-09-26",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Рост",
-      "marker_key": "витальные_рост",
-      "result": 1.94,
-      "unit": "м",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Рост 194 см, вес 116 кг, ИМТ 30.8"
+      "value": 1.94,
+      "unit": null,
+      "reference": null,
+      "comment": "Рост 194 см, вес 116 кг, ИМТ 30.8"
     },
     {
       "date": "2020-09-26",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 110.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Рост 194 см, вес 116 кг, ИМТ 30.8"
+      "value": 110.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Рост 194 см, вес 116 кг, ИМТ 30.8"
     },
     {
       "date": "2020-09-26",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД диастолическое",
-      "marker_key": "витальные_ад_диастолическое",
-      "result": 70.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Рост 194 см, вес 116 кг, ИМТ 30.8"
+      "value": 70.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Рост 194 см, вес 116 кг, ИМТ 30.8"
     },
     {
       "date": "2020-09-26",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 90.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Рост 194 см, вес 116 кг, ИМТ 30.8"
+      "value": 90.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Рост 194 см, вес 116 кг, ИМТ 30.8"
     },
     {
       "date": "2020-11-09",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 117.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Кардиолог: ИМТ 30.77"
+      "value": 117.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Кардиолог: ИМТ 30.77"
     },
     {
       "date": "2020-11-09",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Рост",
-      "marker_key": "витальные_рост",
-      "result": 1.95,
-      "unit": "м",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Кардиолог: ИМТ 30.77"
+      "value": 1.95,
+      "unit": null,
+      "reference": null,
+      "comment": "Кардиолог: ИМТ 30.77"
     },
     {
       "date": "2020-11-09",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 120.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Кардиолог: ИМТ 30.77"
+      "value": 120.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Кардиолог: ИМТ 30.77"
     },
     {
       "date": "2020-11-09",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД диастолическое",
-      "marker_key": "витальные_ад_диастолическое",
-      "result": 80.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Кардиолог: ИМТ 30.77"
+      "value": 80.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Кардиолог: ИМТ 30.77"
     },
     {
       "date": "2020-11-09",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 70.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Кардиолог: ИМТ 30.77"
+      "value": 70.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Кардиолог: ИМТ 30.77"
     },
     {
       "date": "2020-12-07",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 160.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Тредмил-тест: пик нагрузки"
+      "value": 160.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Тредмил-тест: пик нагрузки"
     },
     {
       "date": "2020-12-07",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД диастолическое",
-      "marker_key": "витальные_ад_диастолическое",
-      "result": 100.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Тредмил-тест: пик нагрузки"
+      "value": 100.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Тредмил-тест: пик нагрузки"
     },
     {
       "date": "2020-12-07",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 160.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Тредмил-тест: пик нагрузки"
+      "value": 160.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Тредмил-тест: пик нагрузки"
     },
     {
       "date": "2023-01-12",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 68.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "ЭКГ: синусовый ритм"
+      "value": 68.0,
+      "unit": null,
+      "reference": null,
+      "comment": "ЭКГ: синусовый ритм"
     },
     {
       "date": "2023-12-13",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 120.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Ожирение 1 ст."
+      "value": 120.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Ожирение 1 ст."
     },
     {
       "date": "2023-12-13",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Рост",
-      "marker_key": "витальные_рост",
-      "result": 1.94,
-      "unit": "м",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Ожирение 1 ст."
+      "value": 1.94,
+      "unit": null,
+      "reference": null,
+      "comment": "Ожирение 1 ст."
     },
     {
       "date": "2023-12-13",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 165.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Ожирение 1 ст."
+      "value": 165.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Ожирение 1 ст."
     },
     {
       "date": "2023-12-13",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 62.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Ожирение 1 ст."
+      "value": 62.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Ожирение 1 ст."
     },
     {
       "date": "2024-04-15",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 108.5,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Снижение веса на 11.5 кг"
+      "value": 108.5,
+      "unit": null,
+      "reference": null,
+      "comment": "Снижение веса на 11.5 кг"
     },
     {
       "date": "2024-04-15",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Рост",
-      "marker_key": "витальные_рост",
-      "result": 1.94,
-      "unit": "м",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Снижение веса на 11.5 кг"
+      "value": 1.94,
+      "unit": null,
+      "reference": null,
+      "comment": "Снижение веса на 11.5 кг"
     },
     {
       "date": "2024-04-15",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 110.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Снижение веса на 11.5 кг"
+      "value": 110.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Снижение веса на 11.5 кг"
     },
     {
       "date": "2024-04-15",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 72.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Снижение веса на 11.5 кг"
+      "value": 72.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Снижение веса на 11.5 кг"
     },
     {
       "date": "2025-02-18",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 63.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "ЭКГ 18.02.2025"
+      "value": 63.0,
+      "unit": null,
+      "reference": null,
+      "comment": "ЭКГ 18.02.2025"
     },
     {
       "date": "2025-07-07",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 105.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Тахикардия на Оземпике"
+      "value": 105.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Тахикардия на Оземпике"
     },
     {
       "date": "2025-07-07",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Рост",
-      "marker_key": "витальные_рост",
-      "result": 1.93,
-      "unit": "м",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Тахикардия на Оземпике"
+      "value": 1.93,
+      "unit": null,
+      "reference": null,
+      "comment": "Тахикардия на Оземпике"
     },
     {
       "date": "2025-07-07",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 120.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Тахикардия на Оземпике"
+      "value": 120.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Тахикардия на Оземпике"
     },
     {
       "date": "2025-07-07",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 90.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Тахикардия на Оземпике"
+      "value": 90.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Тахикардия на Оземпике"
     },
     {
       "date": "2025-07-10",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 77.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Холтер: средняя ЧСС 77/сут"
+      "value": 77.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Холтер: средняя ЧСС 77/сут"
     },
     {
       "date": "2025-09-30",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 114.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "ВЭМ покой 114/70 ЧСС 80"
+      "value": 114.0,
+      "unit": null,
+      "reference": null,
+      "comment": "ВЭМ покой 114/70 ЧСС 80"
     },
     {
       "date": "2025-09-30",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД диастолическое",
-      "marker_key": "витальные_ад_диастолическое",
-      "result": 70.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "ВЭМ покой 114/70 ЧСС 80"
+      "value": 70.0,
+      "unit": null,
+      "reference": null,
+      "comment": "ВЭМ покой 114/70 ЧСС 80"
     },
     {
       "date": "2025-09-30",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 80.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "ВЭМ покой 114/70 ЧСС 80"
+      "value": 80.0,
+      "unit": null,
+      "reference": null,
+      "comment": "ВЭМ покой 114/70 ЧСС 80"
     },
     {
       "date": "2025-12-10",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 110.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "DXA: % жира 29.3, висц. жир 1580 г"
+      "value": 110.0,
+      "unit": null,
+      "reference": null,
+      "comment": "DXA: % жира 29.3, висц. жир 1580 г"
     },
     {
       "date": "2025-12-10",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Рост",
-      "marker_key": "витальные_рост",
-      "result": 1.91,
-      "unit": "м",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "DXA: % жира 29.3, висц. жир 1580 г"
+      "value": 1.91,
+      "unit": null,
+      "reference": null,
+      "comment": "DXA: % жира 29.3, висц. жир 1580 г"
     },
     {
       "date": "2025-12-10",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 62.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "ЭКГ 10.12.2025"
+      "value": 62.0,
+      "unit": null,
+      "reference": null,
+      "comment": "ЭКГ 10.12.2025"
     },
     {
       "date": "2026-03-25",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 110.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Рост 193 см, вес 110 кг, ИМТ 29.5"
+      "value": 110.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Рост 193 см, вес 110 кг, ИМТ 29.5"
     },
     {
       "date": "2026-03-25",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Рост",
-      "marker_key": "витальные_рост",
-      "result": 1.93,
-      "unit": "м",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Рост 193 см, вес 110 кг, ИМТ 29.5"
+      "value": 1.93,
+      "unit": null,
+      "reference": null,
+      "comment": "Рост 193 см, вес 110 кг, ИМТ 29.5"
     },
     {
       "date": "2026-05-21",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 110.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Последняя антропометрия"
+      "value": 110.0,
+      "unit": null,
+      "reference": null,
+      "comment": "Последняя антропометрия"
     },
     {
       "date": "2026-05-21",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Рост",
-      "marker_key": "витальные_рост",
-      "result": 1.93,
-      "unit": "м",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": "Последняя антропометрия"
+      "value": 1.93,
+      "unit": null,
+      "reference": null,
+      "comment": "Последняя антропометрия"
     },
     {
       "date": "2020-10-26",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Общий холестерин",
-      "marker_key": "липиды_общий_холестерин",
-      "result": 4.73,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 4.73,
+      "unit": null,
+      "reference": "<5",
+      "comment": null
     },
     {
       "date": "2023-07-11",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Общий холестерин",
-      "marker_key": "липиды_общий_холестерин",
-      "result": 4.6,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 4.6,
+      "unit": null,
+      "reference": "<5",
+      "comment": null
     },
     {
       "date": "2024-01-08",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Общий холестерин",
-      "marker_key": "липиды_общий_холестерин",
-      "result": 2.5,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 2.5,
+      "unit": null,
+      "reference": "<5",
+      "comment": null
     },
     {
       "date": "2024-12-20",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Общий холестерин",
-      "marker_key": "липиды_общий_холестерин",
-      "result": 2.3,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 2.3,
+      "unit": null,
+      "reference": "<5",
+      "comment": null
     },
     {
       "date": "2025-02-18",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Общий холестерин",
-      "marker_key": "липиды_общий_холестерин",
-      "result": 2.6,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 2.6,
+      "unit": null,
+      "reference": "<5",
+      "comment": null
     },
     {
       "date": "2025-06-03",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Общий холестерин",
-      "marker_key": "липиды_общий_холестерин",
-      "result": 2.9,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 2.9,
+      "unit": null,
+      "reference": "<5",
+      "comment": null
     },
     {
       "date": "2025-02-09",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Общий холестерин",
-      "marker_key": "липиды_общий_холестерин",
-      "result": 2.5,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 2.5,
+      "unit": null,
+      "reference": "<5",
+      "comment": null
     },
     {
       "date": "2025-09-12",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Общий холестерин",
-      "marker_key": "липиды_общий_холестерин",
-      "result": 2.8,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
-    },
-    {
-      "date": "2026-11-05",
-      "section": "Липиды",
-      "group": "Липиды",
-      "marker": "Общий холестерин",
-      "marker_key": "липиды_общий_холестерин",
-      "result": 2.56,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 2.8,
+      "unit": null,
+      "reference": "<5",
+      "comment": null
     },
     {
       "date": "2020-10-26",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПНП",
-      "marker_key": "липиды_лпнп",
-      "result": 2.87,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 2.87,
+      "unit": null,
+      "reference": "<1,4",
+      "comment": null
     },
     {
       "date": "2023-07-11",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПНП",
-      "marker_key": "липиды_лпнп",
-      "result": 2.82,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 2.82,
+      "unit": null,
+      "reference": "<1,4",
+      "comment": null
     },
     {
       "date": "2024-01-08",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПНП",
-      "marker_key": "липиды_лпнп",
-      "result": 1.3,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 1.3,
+      "unit": null,
+      "reference": "<1,4",
+      "comment": null
     },
     {
       "date": "2024-12-20",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПНП",
-      "marker_key": "липиды_лпнп",
-      "result": 1.2,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 1.2,
+      "unit": null,
+      "reference": "<1,4",
+      "comment": null
     },
     {
       "date": "2025-02-18",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПНП",
-      "marker_key": "липиды_лпнп",
-      "result": 1.2,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 1.2,
+      "unit": null,
+      "reference": "<1,4",
+      "comment": null
     },
     {
       "date": "2025-06-03",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПНП",
-      "marker_key": "липиды_лпнп",
-      "result": 1.6,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 1.6,
+      "unit": null,
+      "reference": "<1,4",
+      "comment": null
     },
     {
       "date": "2025-02-09",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПНП",
-      "marker_key": "липиды_лпнп",
-      "result": 1.6,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 1.6,
+      "unit": null,
+      "reference": "<1,4",
+      "comment": null
     },
     {
       "date": "2025-09-12",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПНП",
-      "marker_key": "липиды_лпнп",
-      "result": 1.6,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
-    },
-    {
-      "date": "2026-11-05",
-      "section": "Липиды",
-      "group": "Липиды",
-      "marker": "ЛПНП",
-      "marker_key": "липиды_лпнп",
-      "result": 1.33,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 1.6,
+      "unit": null,
+      "reference": "<1,4",
+      "comment": null
     },
     {
       "date": "2020-10-26",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПВП",
-      "marker_key": "липиды_лпвп",
-      "result": 0.92,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 0.92,
+      "unit": null,
+      "reference": ">1",
+      "comment": null
     },
     {
       "date": "2023-07-11",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПВП",
-      "marker_key": "липиды_лпвп",
-      "result": 0.91,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 0.91,
+      "unit": null,
+      "reference": ">1",
+      "comment": null
     },
     {
       "date": "2024-01-08",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПВП",
-      "marker_key": "липиды_лпвп",
-      "result": 0.89,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 0.89,
+      "unit": null,
+      "reference": ">1",
+      "comment": null
     },
     {
       "date": "2024-12-20",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПВП",
-      "marker_key": "липиды_лпвп",
-      "result": 0.83,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 0.83,
+      "unit": null,
+      "reference": ">1",
+      "comment": null
     },
     {
       "date": "2025-06-03",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПВП",
-      "marker_key": "липиды_лпвп",
-      "result": 0.97,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 0.97,
+      "unit": null,
+      "reference": ">1",
+      "comment": null
     },
     {
       "date": "2025-02-09",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПВП",
-      "marker_key": "липиды_лпвп",
-      "result": 0.83,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 0.83,
+      "unit": null,
+      "reference": ">1",
+      "comment": null
     },
     {
       "date": "2025-09-12",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "ЛПВП",
-      "marker_key": "липиды_лпвп",
-      "result": 0.98,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
-    },
-    {
-      "date": "2026-11-05",
-      "section": "Липиды",
-      "group": "Липиды",
-      "marker": "ЛПВП",
-      "marker_key": "липиды_лпвп",
-      "result": 0.85,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 0.98,
+      "unit": null,
+      "reference": ">1",
+      "comment": null
     },
     {
       "date": "2020-10-26",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Триглицериды",
-      "marker_key": "липиды_триглицериды",
-      "result": 2.08,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 2.08,
+      "unit": null,
+      "reference": "<1,7",
+      "comment": null
     },
     {
       "date": "2023-07-11",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Триглицериды",
-      "marker_key": "липиды_триглицериды",
-      "result": 2.03,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 2.03,
+      "unit": null,
+      "reference": "<1,7",
+      "comment": null
     },
     {
       "date": "2024-01-08",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Триглицериды",
-      "marker_key": "липиды_триглицериды",
-      "result": 0.82,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 0.82,
+      "unit": null,
+      "reference": "<1,7",
+      "comment": null
     },
     {
       "date": "2024-12-20",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Триглицериды",
-      "marker_key": "липиды_триглицериды",
-      "result": 0.8,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 0.8,
+      "unit": null,
+      "reference": "<1,7",
+      "comment": null
     },
     {
       "date": "2025-02-18",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Триглицериды",
-      "marker_key": "липиды_триглицериды",
-      "result": 0.87,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 0.87,
+      "unit": null,
+      "reference": "<1,7",
+      "comment": null
     },
     {
       "date": "2025-06-03",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Триглицериды",
-      "marker_key": "липиды_триглицериды",
-      "result": 1.19,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 1.19,
+      "unit": null,
+      "reference": "<1,7",
+      "comment": null
     },
     {
       "date": "2025-02-09",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Триглицериды",
-      "marker_key": "липиды_триглицериды",
-      "result": 1.2,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 1.2,
+      "unit": null,
+      "reference": "<1,7",
+      "comment": null
     },
     {
       "date": "2025-09-12",
-      "section": "Липиды",
       "group": "Липиды",
       "marker": "Триглицериды",
-      "marker_key": "липиды_триглицериды",
-      "result": 1.03,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
-    },
-    {
-      "date": "2026-11-05",
-      "section": "Липиды",
-      "group": "Липиды",
-      "marker": "Триглицериды",
-      "marker_key": "липиды_триглицериды",
-      "result": 0.83,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 1.03,
+      "unit": null,
+      "reference": "<1,7",
+      "comment": null
     },
     {
       "date": "2020-02-12",
-      "section": "Гематология",
       "group": "Гематология",
       "marker": "Гликированный гемоглобин",
-      "marker_key": "гематология_гликированный_гемоглобин",
-      "result": 5.7,
-      "unit": "%",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 5.7,
+      "unit": null,
+      "reference": "4,27-6,07",
+      "comment": null
     },
     {
       "date": "2023-07-11",
-      "section": "Гематология",
       "group": "Гематология",
       "marker": "Гликированный гемоглобин",
-      "marker_key": "гематология_гликированный_гемоглобин",
-      "result": 5.9,
-      "unit": "%",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 5.9,
+      "unit": null,
+      "reference": "4,27-6,07",
+      "comment": null
     },
     {
       "date": "2024-01-08",
-      "section": "Гематология",
       "group": "Гематология",
       "marker": "Гликированный гемоглобин",
-      "marker_key": "гематология_гликированный_гемоглобин",
-      "result": 5.6,
-      "unit": "%",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 5.6,
+      "unit": null,
+      "reference": "4,27-6,07",
+      "comment": null
     },
     {
       "date": "2024-12-20",
-      "section": "Гематология",
       "group": "Гематология",
       "marker": "Гликированный гемоглобин",
-      "marker_key": "гематология_гликированный_гемоглобин",
-      "result": 5.5,
-      "unit": "%",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 5.5,
+      "unit": null,
+      "reference": "4,27-6,07",
+      "comment": null
     },
     {
       "date": "2025-02-18",
-      "section": "Гематология",
       "group": "Гематология",
       "marker": "Гликированный гемоглобин",
-      "marker_key": "гематология_гликированный_гемоглобин",
-      "result": 5.5,
-      "unit": "%",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 5.5,
+      "unit": null,
+      "reference": "4,27-6,07",
+      "comment": null
     },
     {
       "date": "2025-02-09",
-      "section": "Гематология",
       "group": "Гематология",
       "marker": "Гликированный гемоглобин",
-      "marker_key": "гематология_гликированный_гемоглобин",
-      "result": 5.6,
-      "unit": "%",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 5.6,
+      "unit": null,
+      "reference": "4,27-6,07",
+      "comment": null
     },
     {
       "date": "2025-09-12",
-      "section": "Гематология",
       "group": "Гематология",
       "marker": "Гликированный гемоглобин",
-      "marker_key": "гематология_гликированный_гемоглобин",
-      "result": 6.1,
-      "unit": "%",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
-    },
-    {
-      "date": "2026-11-05",
-      "section": "Гематология",
-      "group": "Гематология",
-      "marker": "Гликированный гемоглобин",
-      "marker_key": "гематология_гликированный_гемоглобин",
-      "result": 6.1,
-      "unit": "%",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
-    },
-    {
-      "date": "2026-05-22",
-      "section": "Гематология",
-      "group": "Гематология",
-      "marker": "Гликированный гемоглобин",
-      "marker_key": "гематология_гликированный_гемоглобин",
-      "result": 3.0,
-      "unit": "%",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 6.1,
+      "unit": null,
+      "reference": "4,27-6,07",
+      "comment": null
     },
     {
       "date": "2018-04-28",
-      "section": "Биохимия",
       "group": "Биохимия",
       "marker": "Глюкоза",
-      "marker_key": "биохимия_глюкоза",
-      "result": 5.85,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 5.85,
+      "unit": null,
+      "reference": "3,9-6,1",
+      "comment": null
     },
     {
       "date": "2023-07-11",
-      "section": "Биохимия",
       "group": "Биохимия",
       "marker": "Глюкоза",
-      "marker_key": "биохимия_глюкоза",
-      "result": 7.31,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 7.31,
+      "unit": null,
+      "reference": "3,9-6,1",
+      "comment": null
     },
     {
       "date": "2024-01-08",
-      "section": "Биохимия",
       "group": "Биохимия",
       "marker": "Глюкоза",
-      "marker_key": "биохимия_глюкоза",
-      "result": 5.2,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 5.2,
+      "unit": null,
+      "reference": "3,9-6,1",
+      "comment": null
     },
     {
       "date": "2024-12-20",
-      "section": "Биохимия",
       "group": "Биохимия",
       "marker": "Глюкоза",
-      "marker_key": "биохимия_глюкоза",
-      "result": 4.96,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 4.96,
+      "unit": null,
+      "reference": "3,9-6,1",
+      "comment": null
     },
     {
       "date": "2025-02-18",
-      "section": "Биохимия",
       "group": "Биохимия",
       "marker": "Глюкоза",
-      "marker_key": "биохимия_глюкоза",
-      "result": 5.27,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 5.27,
+      "unit": null,
+      "reference": "3,9-6,1",
+      "comment": null
     },
     {
       "date": "2025-02-09",
-      "section": "Биохимия",
       "group": "Биохимия",
       "marker": "Глюкоза",
-      "marker_key": "биохимия_глюкоза",
-      "result": 4.85,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 4.85,
+      "unit": null,
+      "reference": "3,9-6,1",
+      "comment": null
     },
     {
       "date": "2025-09-12",
-      "section": "Биохимия",
       "group": "Биохимия",
       "marker": "Глюкоза",
-      "marker_key": "биохимия_глюкоза",
-      "result": 4.83,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 4.83,
+      "unit": null,
+      "reference": "3,9-6,1",
+      "comment": null
     },
     {
       "date": "2026-12-05",
-      "section": "Биохимия",
       "group": "Биохимия",
       "marker": "Глюкоза",
-      "marker_key": "биохимия_глюкоза",
-      "result": 5.1,
-      "unit": "ммоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 5.1,
+      "unit": null,
+      "reference": "3,9-6,1",
+      "comment": null
     },
     {
       "date": "2020-02-12",
-      "section": "Прочее",
       "group": "Прочее",
       "marker": "hs-CRP",
-      "marker_key": "прочее_hs_crp",
-      "result": 0.7,
-      "unit": "мг/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
-    },
-    {
-      "date": "2026-11-05",
-      "section": "Прочее",
-      "group": "Прочее",
-      "marker": "hs-CRP",
-      "marker_key": "прочее_hs_crp",
-      "result": 0.32,
-      "unit": "мг/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 0.7,
+      "unit": null,
+      "reference": "<1",
+      "comment": null
     },
     {
       "date": "2020-09-21",
-      "section": "Гормоны",
       "group": "Гормоны",
       "marker": "Тестостерон общий",
-      "marker_key": "гормоны_тестостерон_общий",
-      "result": 12.5,
-      "unit": "нмоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 12.5,
+      "unit": null,
+      "reference": "7,66-24,8",
+      "comment": null
     },
     {
       "date": "2023-12-27",
-      "section": "Гормоны",
       "group": "Гормоны",
       "marker": "Тестостерон общий",
-      "marker_key": "гормоны_тестостерон_общий",
-      "result": 15.547,
-      "unit": "нмоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 15.547,
+      "unit": null,
+      "reference": "7,66-24,8",
+      "comment": null
     },
     {
       "date": "2024-03-26",
-      "section": "Гормоны",
       "group": "Гормоны",
       "marker": "Тестостерон общий",
-      "marker_key": "гормоны_тестостерон_общий",
-      "result": 13.968,
-      "unit": "нмоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 13.968,
+      "unit": null,
+      "reference": "7,66-24,8",
+      "comment": null
     },
     {
       "date": "2025-06-03",
-      "section": "Гормоны",
       "group": "Гормоны",
       "marker": "Тестостерон общий",
-      "marker_key": "гормоны_тестостерон_общий",
-      "result": 11.23,
-      "unit": "нмоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 11.23,
+      "unit": null,
+      "reference": "7,66-24,8",
+      "comment": null
     },
     {
       "date": "2025-03-25",
-      "section": "Гормоны",
       "group": "Гормоны",
       "marker": "Тестостерон общий",
-      "marker_key": "гормоны_тестостерон_общий",
-      "result": 22.1,
-      "unit": "нмоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 22.1,
+      "unit": null,
+      "reference": "7,66-24,8",
+      "comment": null
     },
     {
       "date": "2025-02-09",
-      "section": "Гормоны",
       "group": "Гормоны",
       "marker": "Тестостерон общий",
-      "marker_key": "гормоны_тестостерон_общий",
-      "result": 19.433,
-      "unit": "нмоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
-    },
-    {
-      "date": "2026-11-05",
-      "section": "Гормоны",
-      "group": "Гормоны",
-      "marker": "Тестостерон общий",
-      "marker_key": "гормоны_тестостерон_общий",
-      "result": 8.6,
-      "unit": "нмоль/л",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 19.433,
+      "unit": null,
+      "reference": "7,66-24,8",
+      "comment": null
     },
     {
       "date": "2020-09-21",
-      "section": "Гормоны",
       "group": "Гормоны",
       "marker": "ФСГ",
-      "marker_key": "гормоны_фсг",
-      "result": 37.6,
-      "unit": "мМЕ/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 37.6,
+      "unit": null,
+      "reference": "1,5-12,4",
+      "comment": null
     },
     {
       "date": "2025-03-25",
-      "section": "Гормоны",
       "group": "Гормоны",
       "marker": "ФСГ",
-      "marker_key": "гормоны_фсг",
-      "result": 41.05,
-      "unit": "мМЕ/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
-    },
-    {
-      "date": "2026-11-05",
-      "section": "Гормоны",
-      "group": "Гормоны",
-      "marker": "ФСГ",
-      "marker_key": "гормоны_фсг",
-      "result": 33.42,
-      "unit": "мМЕ/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 41.05,
+      "unit": null,
+      "reference": "1,5-12,4",
+      "comment": null
     },
     {
       "date": "2020-09-21",
-      "section": "Гормоны",
       "group": "Гормоны",
       "marker": "ЛГ",
-      "marker_key": "гормоны_лг",
-      "result": 8.47,
-      "unit": "мМЕ/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 8.47,
+      "unit": null,
+      "reference": "1,7-8,6",
+      "comment": null
     },
     {
       "date": "2023-12-27",
-      "section": "Гормоны",
       "group": "Гормоны",
       "marker": "ЛГ",
-      "marker_key": "гормоны_лг",
-      "result": 7.18,
-      "unit": "мМЕ/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 7.18,
+      "unit": null,
+      "reference": "1,7-8,6",
+      "comment": null
     },
     {
       "date": "2025-03-25",
-      "section": "Гормоны",
       "group": "Гормоны",
       "marker": "ЛГ",
-      "marker_key": "гормоны_лг",
-      "result": 8.38,
-      "unit": "мМЕ/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
-    },
-    {
-      "date": "2026-11-05",
-      "section": "Гормоны",
-      "group": "Гормоны",
-      "marker": "ЛГ",
-      "marker_key": "гормоны_лг",
-      "result": 9.3,
-      "unit": "мМЕ/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 8.38,
+      "unit": null,
+      "reference": "1,7-8,6",
+      "comment": null
     },
     {
       "date": "2018-04-28",
-      "section": "Витамины/микроэлементы",
       "group": "Витамины/микроэлементы",
       "marker": "Витамин D (25-OH)",
-      "marker_key": "витамины_микроэлементы_витамин_d_25_oh",
-      "result": 10.6,
-      "unit": "нг/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 10.6,
+      "unit": null,
+      "reference": "30-100",
+      "comment": null
     },
     {
       "date": "2020-02-12",
-      "section": "Витамины/микроэлементы",
       "group": "Витамины/микроэлементы",
       "marker": "Витамин D (25-OH)",
-      "marker_key": "витамины_микроэлементы_витамин_d_25_oh",
-      "result": 19.8,
-      "unit": "нг/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 19.8,
+      "unit": null,
+      "reference": "30-100",
+      "comment": null
     },
     {
       "date": "2023-07-11",
-      "section": "Витамины/микроэлементы",
       "group": "Витамины/микроэлементы",
       "marker": "Витамин D (25-OH)",
-      "marker_key": "витамины_микроэлементы_витамин_d_25_oh",
-      "result": 17.2,
-      "unit": "нг/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 17.2,
+      "unit": null,
+      "reference": "30-100",
+      "comment": null
     },
     {
       "date": "2024-03-26",
-      "section": "Витамины/микроэлементы",
       "group": "Витамины/микроэлементы",
       "marker": "Витамин D (25-OH)",
-      "marker_key": "витамины_микроэлементы_витамин_d_25_oh",
-      "result": 79.9,
-      "unit": "нг/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 79.9,
+      "unit": null,
+      "reference": "30-100",
+      "comment": null
     },
     {
       "date": "2024-01-08",
-      "section": "Витамины/микроэлементы",
       "group": "Витамины/микроэлементы",
       "marker": "Витамин D (25-OH)",
-      "marker_key": "витамины_микроэлементы_витамин_d_25_oh",
-      "result": 57.3,
-      "unit": "нг/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 57.3,
+      "unit": null,
+      "reference": "30-100",
+      "comment": null
     },
     {
       "date": "2024-06-09",
-      "section": "Витамины/микроэлементы",
       "group": "Витамины/микроэлементы",
       "marker": "Витамин D (25-OH)",
-      "marker_key": "витамины_микроэлементы_витамин_d_25_oh",
-      "result": 57.9,
-      "unit": "нг/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 57.9,
+      "unit": null,
+      "reference": "30-100",
+      "comment": null
     },
     {
       "date": "2025-02-18",
-      "section": "Витамины/микроэлементы",
       "group": "Витамины/микроэлементы",
       "marker": "Витамин D (25-OH)",
-      "marker_key": "витамины_микроэлементы_витамин_d_25_oh",
-      "result": 62.0,
-      "unit": "нг/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 62.0,
+      "unit": null,
+      "reference": "30-100",
+      "comment": null
     },
     {
       "date": "2025-06-03",
-      "section": "Витамины/микроэлементы",
       "group": "Витамины/микроэлементы",
       "marker": "Витамин D (25-OH)",
-      "marker_key": "витамины_микроэлементы_витамин_d_25_oh",
-      "result": 62.0,
-      "unit": "нг/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 62.0,
+      "unit": null,
+      "reference": "30-100",
+      "comment": null
     },
     {
       "date": "2025-02-09",
-      "section": "Витамины/микроэлементы",
       "group": "Витамины/микроэлементы",
       "marker": "Витамин D (25-OH)",
-      "marker_key": "витамины_микроэлементы_витамин_d_25_oh",
-      "result": 61.5,
-      "unit": "нг/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
-    },
-    {
-      "date": "2026-11-05",
-      "section": "Витамины/микроэлементы",
-      "group": "Витамины/микроэлементы",
-      "marker": "Витамин D (25-OH)",
-      "marker_key": "витамины_микроэлементы_витамин_d_25_oh",
-      "result": 53.6,
-      "unit": "нг/мл",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 61.5,
+      "unit": null,
+      "reference": "30-100",
+      "comment": null
     },
     {
       "date": "2020-03-02",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 110.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 110.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2020-09-26",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 116.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 116.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2020-09-11",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 117.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 117.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2023-12-13",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 120.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 120.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2024-04-15",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 108.5,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 108.5,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2025-07-07",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 105.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 105.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2025-10-12",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 110.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 110.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2026-03-25",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Вес",
-      "marker_key": "витальные_вес",
-      "result": 110.0,
-      "unit": "кг",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 110.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2011-03-10",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 125.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 125.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2020-09-26",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 110.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 110.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2020-09-11",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 120.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 120.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2020-07-12",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 160.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 160.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2023-12-13",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 165.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 165.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2024-04-15",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 110.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 110.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2025-07-07",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 120.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 120.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2025-09-30",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД систолическое",
-      "marker_key": "витальные_ад_систолическое",
-      "result": 114.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 114.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2011-03-10",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД диастолическое",
-      "marker_key": "витальные_ад_диастолическое",
-      "result": 80.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 80.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2020-09-26",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД диастолическое",
-      "marker_key": "витальные_ад_диастолическое",
-      "result": 70.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 70.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2020-09-11",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД диастолическое",
-      "marker_key": "витальные_ад_диастолическое",
-      "result": 80.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 80.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2020-07-12",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД диастолическое",
-      "marker_key": "витальные_ад_диастолическое",
-      "result": 100.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 100.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2025-09-30",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "АД диастолическое",
-      "marker_key": "витальные_ад_диастолическое",
-      "result": 70.0,
-      "unit": "мм рт.ст.",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 70.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2011-03-10",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 79.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 79.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2020-09-26",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 90.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 90.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2020-09-11",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 70.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 70.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2020-07-12",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 160.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 160.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2023-12-01",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 68.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 68.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2023-12-13",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 62.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 62.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2024-04-15",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 72.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 72.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2025-02-18",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 63.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 63.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2025-07-07",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 90.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 90.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2025-10-07",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 77.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 77.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2025-09-30",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 80.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 80.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     },
     {
       "date": "2025-10-12",
-      "section": "Витальные",
       "group": "Витальные",
       "marker": "Пульс",
-      "marker_key": "витальные_пульс",
-      "result": 62.0,
-      "unit": "уд/мин",
-      "lower_ref": null,
-      "upper_ref": null,
-      "reference_text": null,
-      "clinical_note": null
+      "value": 62.0,
+      "unit": null,
+      "reference": null,
+      "comment": null
     }
-  ]
+  ],
+  "groups": [
+    "Биохимия",
+    "Витальные",
+    "Витамины/микроэлементы",
+    "Гематология",
+    "Гормоны",
+    "Липиды",
+    "Прочее"
+  ],
+  "markers": [
+    "HOMA-IR",
+    "hs-CRP",
+    "АД диастолическое",
+    "АД систолическое",
+    "АЛТ",
+    "АСТ",
+    "Вес",
+    "Витамин D (25-OH)",
+    "Гликированный гемоглобин",
+    "Глюкоза",
+    "ИМТ",
+    "Индекс атерогенности",
+    "КФК",
+    "Креатинин",
+    "ЛГ",
+    "ЛПВП",
+    "ЛПНП",
+    "Общий холестерин",
+    "Пульс",
+    "Рост",
+    "Тестостерон общий",
+    "Тестостерон свободный",
+    "Триглицериды",
+    "ФСГ"
+  ],
+  "series": {
+    "Общий холестерин": [
+      {
+        "date": "2026-05-11",
+        "value": 2.56,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2020-10-26",
+        "value": 4.73,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2023-07-11",
+        "value": 4.6,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2024-01-08",
+        "value": 2.5,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2024-12-20",
+        "value": 2.3,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2025-02-18",
+        "value": 2.6,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2025-06-03",
+        "value": 2.9,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2025-02-09",
+        "value": 2.5,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2025-09-12",
+        "value": 2.8,
+        "group": "Липиды",
+        "unit": null
+      }
+    ],
+    "ЛПВП": [
+      {
+        "date": "2026-05-11",
+        "value": 0.85,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2020-10-26",
+        "value": 0.92,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2023-07-11",
+        "value": 0.91,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2024-01-08",
+        "value": 0.89,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2024-12-20",
+        "value": 0.83,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2025-06-03",
+        "value": 0.97,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2025-02-09",
+        "value": 0.83,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2025-09-12",
+        "value": 0.98,
+        "group": "Липиды",
+        "unit": null
+      }
+    ],
+    "Триглицериды": [
+      {
+        "date": "2026-05-11",
+        "value": 0.83,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2020-10-26",
+        "value": 2.08,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2023-07-11",
+        "value": 2.03,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2024-01-08",
+        "value": 0.82,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2024-12-20",
+        "value": 0.8,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2025-02-18",
+        "value": 0.87,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2025-06-03",
+        "value": 1.19,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2025-02-09",
+        "value": 1.2,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2025-09-12",
+        "value": 1.03,
+        "group": "Липиды",
+        "unit": null
+      }
+    ],
+    "ЛПНП": [
+      {
+        "date": "2026-05-11",
+        "value": 1.33,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2020-10-26",
+        "value": 2.87,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2023-07-11",
+        "value": 2.82,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2024-01-08",
+        "value": 1.3,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2024-12-20",
+        "value": 1.2,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2025-02-18",
+        "value": 1.2,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2025-06-03",
+        "value": 1.6,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2025-02-09",
+        "value": 1.6,
+        "group": "Липиды",
+        "unit": null
+      },
+      {
+        "date": "2025-09-12",
+        "value": 1.6,
+        "group": "Липиды",
+        "unit": null
+      }
+    ],
+    "Индекс атерогенности": [
+      {
+        "date": "2026-05-11",
+        "value": 2.01,
+        "group": "Липиды",
+        "unit": null
+      }
+    ],
+    "hs-CRP": [
+      {
+        "date": "2026-05-11",
+        "value": 0.32,
+        "group": "Прочее",
+        "unit": null
+      },
+      {
+        "date": "2020-02-12",
+        "value": 0.7,
+        "group": "Прочее",
+        "unit": null
+      }
+    ],
+    "Гликированный гемоглобин": [
+      {
+        "date": "2026-05-11",
+        "value": 6.1,
+        "group": "Гематология",
+        "unit": null
+      },
+      {
+        "date": "2020-02-12",
+        "value": 5.7,
+        "group": "Гематология",
+        "unit": null
+      },
+      {
+        "date": "2023-07-11",
+        "value": 5.9,
+        "group": "Гематология",
+        "unit": null
+      },
+      {
+        "date": "2024-01-08",
+        "value": 5.6,
+        "group": "Гематология",
+        "unit": null
+      },
+      {
+        "date": "2024-12-20",
+        "value": 5.5,
+        "group": "Гематология",
+        "unit": null
+      },
+      {
+        "date": "2025-02-18",
+        "value": 5.5,
+        "group": "Гематология",
+        "unit": null
+      },
+      {
+        "date": "2025-02-09",
+        "value": 5.6,
+        "group": "Гематология",
+        "unit": null
+      },
+      {
+        "date": "2025-09-12",
+        "value": 6.1,
+        "group": "Гематология",
+        "unit": null
+      }
+    ],
+    "HOMA-IR": [
+      {
+        "date": "2026-05-11",
+        "value": 1.2,
+        "group": "Прочее",
+        "unit": null
+      }
+    ],
+    "Креатинин": [
+      {
+        "date": "2026-05-11",
+        "value": 76.0,
+        "group": "Биохимия",
+        "unit": null
+      }
+    ],
+    "АЛТ": [
+      {
+        "date": "2026-05-11",
+        "value": 16.3,
+        "group": "Биохимия",
+        "unit": null
+      }
+    ],
+    "АСТ": [
+      {
+        "date": "2026-05-11",
+        "value": 23.0,
+        "group": "Биохимия",
+        "unit": null
+      }
+    ],
+    "КФК": [
+      {
+        "date": "2026-05-11",
+        "value": 119.9,
+        "group": "Биохимия",
+        "unit": null
+      }
+    ],
+    "Витамин D (25-OH)": [
+      {
+        "date": "2026-05-11",
+        "value": 53.6,
+        "group": "Витамины/микроэлементы",
+        "unit": null
+      },
+      {
+        "date": "2018-04-28",
+        "value": 10.6,
+        "group": "Витамины/микроэлементы",
+        "unit": null
+      },
+      {
+        "date": "2020-02-12",
+        "value": 19.8,
+        "group": "Витамины/микроэлементы",
+        "unit": null
+      },
+      {
+        "date": "2023-07-11",
+        "value": 17.2,
+        "group": "Витамины/микроэлементы",
+        "unit": null
+      },
+      {
+        "date": "2024-03-26",
+        "value": 79.9,
+        "group": "Витамины/микроэлементы",
+        "unit": null
+      },
+      {
+        "date": "2024-01-08",
+        "value": 57.3,
+        "group": "Витамины/микроэлементы",
+        "unit": null
+      },
+      {
+        "date": "2024-06-09",
+        "value": 57.9,
+        "group": "Витамины/микроэлементы",
+        "unit": null
+      },
+      {
+        "date": "2025-02-18",
+        "value": 62.0,
+        "group": "Витамины/микроэлементы",
+        "unit": null
+      },
+      {
+        "date": "2025-06-03",
+        "value": 62.0,
+        "group": "Витамины/микроэлементы",
+        "unit": null
+      },
+      {
+        "date": "2025-02-09",
+        "value": 61.5,
+        "group": "Витамины/микроэлементы",
+        "unit": null
+      }
+    ],
+    "Тестостерон общий": [
+      {
+        "date": "2026-05-11",
+        "value": 8.6,
+        "group": "Гормоны",
+        "unit": null
+      },
+      {
+        "date": "2020-09-21",
+        "value": 12.5,
+        "group": "Гормоны",
+        "unit": null
+      },
+      {
+        "date": "2023-12-27",
+        "value": 15.547,
+        "group": "Гормоны",
+        "unit": null
+      },
+      {
+        "date": "2024-03-26",
+        "value": 13.968,
+        "group": "Гормоны",
+        "unit": null
+      },
+      {
+        "date": "2025-06-03",
+        "value": 11.23,
+        "group": "Гормоны",
+        "unit": null
+      },
+      {
+        "date": "2025-03-25",
+        "value": 22.1,
+        "group": "Гормоны",
+        "unit": null
+      },
+      {
+        "date": "2025-02-09",
+        "value": 19.433,
+        "group": "Гормоны",
+        "unit": null
+      }
+    ],
+    "Тестостерон свободный": [
+      {
+        "date": "2026-05-11",
+        "value": 164.76,
+        "group": "Гормоны",
+        "unit": null
+      }
+    ],
+    "ФСГ": [
+      {
+        "date": "2026-05-11",
+        "value": 33.42,
+        "group": "Гормоны",
+        "unit": null
+      },
+      {
+        "date": "2020-09-21",
+        "value": 37.6,
+        "group": "Гормоны",
+        "unit": null
+      },
+      {
+        "date": "2025-03-25",
+        "value": 41.05,
+        "group": "Гормоны",
+        "unit": null
+      }
+    ],
+    "ЛГ": [
+      {
+        "date": "2026-05-11",
+        "value": 9.3,
+        "group": "Гормоны",
+        "unit": null
+      },
+      {
+        "date": "2020-09-21",
+        "value": 8.47,
+        "group": "Гормоны",
+        "unit": null
+      },
+      {
+        "date": "2023-12-27",
+        "value": 7.18,
+        "group": "Гормоны",
+        "unit": null
+      },
+      {
+        "date": "2025-03-25",
+        "value": 8.38,
+        "group": "Гормоны",
+        "unit": null
+      }
+    ],
+    "Рост": [
+      {
+        "date": "2026-05-11",
+        "value": 193.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-02-03",
+        "value": 1.94,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-09-26",
+        "value": 1.94,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-11-09",
+        "value": 1.95,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2023-12-13",
+        "value": 1.94,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2024-04-15",
+        "value": 1.94,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-07-07",
+        "value": 1.93,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-12-10",
+        "value": 1.91,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2026-03-25",
+        "value": 1.93,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2026-05-21",
+        "value": 1.93,
+        "group": "Витальные",
+        "unit": null
+      }
+    ],
+    "Вес": [
+      {
+        "date": "2026-05-11",
+        "value": 110.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-02-03",
+        "value": 110.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-09-26",
+        "value": 116.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-11-09",
+        "value": 117.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2023-12-13",
+        "value": 120.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2024-04-15",
+        "value": 108.5,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-07-07",
+        "value": 105.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-12-10",
+        "value": 110.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2026-03-25",
+        "value": 110.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2026-05-21",
+        "value": 110.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-03-02",
+        "value": 110.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-09-26",
+        "value": 116.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-09-11",
+        "value": 117.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2023-12-13",
+        "value": 120.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2024-04-15",
+        "value": 108.5,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-07-07",
+        "value": 105.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-10-12",
+        "value": 110.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2026-03-25",
+        "value": 110.0,
+        "group": "Витальные",
+        "unit": null
+      }
+    ],
+    "ИМТ": [
+      {
+        "date": "2026-05-11",
+        "value": 29.5,
+        "group": "Прочее",
+        "unit": null
+      }
+    ],
+    "АД систолическое": [
+      {
+        "date": "2011-10-03",
+        "value": 125.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-09-26",
+        "value": 110.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-11-09",
+        "value": 120.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-12-07",
+        "value": 160.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2023-12-13",
+        "value": 165.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2024-04-15",
+        "value": 110.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-07-07",
+        "value": 120.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-09-30",
+        "value": 114.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2011-03-10",
+        "value": 125.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-09-26",
+        "value": 110.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-09-11",
+        "value": 120.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-07-12",
+        "value": 160.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2023-12-13",
+        "value": 165.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2024-04-15",
+        "value": 110.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-07-07",
+        "value": 120.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-09-30",
+        "value": 114.0,
+        "group": "Витальные",
+        "unit": null
+      }
+    ],
+    "АД диастолическое": [
+      {
+        "date": "2011-10-03",
+        "value": 80.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-09-26",
+        "value": 70.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-11-09",
+        "value": 80.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-12-07",
+        "value": 100.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-09-30",
+        "value": 70.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2011-03-10",
+        "value": 80.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-09-26",
+        "value": 70.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-09-11",
+        "value": 80.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-07-12",
+        "value": 100.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-09-30",
+        "value": 70.0,
+        "group": "Витальные",
+        "unit": null
+      }
+    ],
+    "Пульс": [
+      {
+        "date": "2011-10-03",
+        "value": 79.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-09-26",
+        "value": 90.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-11-09",
+        "value": 70.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-12-07",
+        "value": 160.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2023-01-12",
+        "value": 68.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2023-12-13",
+        "value": 62.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2024-04-15",
+        "value": 72.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-02-18",
+        "value": 63.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-07-07",
+        "value": 90.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-07-10",
+        "value": 77.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-09-30",
+        "value": 80.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-12-10",
+        "value": 62.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2011-03-10",
+        "value": 79.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-09-26",
+        "value": 90.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-09-11",
+        "value": 70.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2020-07-12",
+        "value": 160.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2023-12-01",
+        "value": 68.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2023-12-13",
+        "value": 62.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2024-04-15",
+        "value": 72.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-02-18",
+        "value": 63.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-07-07",
+        "value": 90.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-10-07",
+        "value": 77.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-09-30",
+        "value": 80.0,
+        "group": "Витальные",
+        "unit": null
+      },
+      {
+        "date": "2025-10-12",
+        "value": 62.0,
+        "group": "Витальные",
+        "unit": null
+      }
+    ],
+    "Глюкоза": [
+      {
+        "date": "2018-04-28",
+        "value": 5.85,
+        "group": "Биохимия",
+        "unit": null
+      },
+      {
+        "date": "2023-07-11",
+        "value": 7.31,
+        "group": "Биохимия",
+        "unit": null
+      },
+      {
+        "date": "2024-01-08",
+        "value": 5.2,
+        "group": "Биохимия",
+        "unit": null
+      },
+      {
+        "date": "2024-12-20",
+        "value": 4.96,
+        "group": "Биохимия",
+        "unit": null
+      },
+      {
+        "date": "2025-02-18",
+        "value": 5.27,
+        "group": "Биохимия",
+        "unit": null
+      },
+      {
+        "date": "2025-02-09",
+        "value": 4.85,
+        "group": "Биохимия",
+        "unit": null
+      },
+      {
+        "date": "2025-09-12",
+        "value": 4.83,
+        "group": "Биохимия",
+        "unit": null
+      },
+      {
+        "date": "2026-12-05",
+        "value": 5.1,
+        "group": "Биохимия",
+        "unit": null
+      }
+    ]
+  }
 }
