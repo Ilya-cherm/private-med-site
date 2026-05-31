@@ -1,0 +1,40 @@
+name: Update data.json from Excel
+
+on:
+  push:
+    paths:
+      - 'patient.xlsx'
+      - 'scripts/excel_to_json.py'
+      - '.github/workflows/update-data.yml'
+    branches:
+      - main
+
+jobs:
+  build-json:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pandas openpyxl
+
+      - name: Convert Excel to JSON
+        run: python scripts/excel_to_json.py
+
+      - name: Commit updated data.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data.json
+          git diff --cached --quiet || git commit -m "Auto-update data.json from Excel"
+          git push
