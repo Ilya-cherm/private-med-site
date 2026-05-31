@@ -17,6 +17,7 @@
     .btn{margin-top:16px;width:100%;padding:10px 14px;border-radius:12px;border:none;background:var(--accent);color:#fff;font-weight:600;cursor:pointer}
     .btn:hover{filter:brightness(.96)}.error{margin-top:10px;min-height:20px;color:var(--danger);font-size:13px}
     .top{display:grid;grid-template-columns:1.15fr .95fr .95fr;gap:12px;margin-bottom:14px}
+    .mobile-chart-card{display:none}
     .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:14px}.stack{display:grid;gap:14px}.card{padding:16px}
     .kv{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.kv div{border-radius:14px;border:1px solid var(--line);padding:10px;background:#f8fafc}
     .kv b{display:block;font-size:12px;color:var(--muted);margin-bottom:4px}
@@ -25,7 +26,17 @@
     .table th,.table td{padding:8px 6px;border-bottom:1px solid var(--line);white-space:nowrap;text-align:left}
     .table th{position:sticky;top:0;background:#f8fafc;font-weight:600}
     .canvas-box{height:380px}.footer-note{font-size:12px;color:var(--muted);margin-top:6px}
-    @media(max-width:960px){.top,.grid{grid-template-columns:1fr}.canvas-box{height:300px}}
+    @media(max-width:960px){
+      .wrap{padding:12px}
+      .top,.grid,.kv{grid-template-columns:1fr}
+      .card{padding:14px;border-radius:14px}
+      .top{gap:10px;margin-bottom:10px}
+      .desktop-chart-card{display:none}
+      .mobile-chart-card{display:block}
+      .canvas-box{height:280px}
+      .table{font-size:12px}
+      .table th,.table td{padding:7px 6px}
+    }
   </style>
 </head>
 <body>
@@ -50,6 +61,12 @@
       <select id="markerSelect" class="select"></select>
     </div>
 
+    <div class="card mobile-chart-card" style="margin-bottom:14px">
+      <h2>График показателя</h2>
+      <div class="canvas-box"><canvas id="markerChartMobile"></canvas></div>
+      <div class="footer-note">На телефоне выбор показателя и сам график идут подряд.</div>
+    </div>
+
     <section class="grid">
       <div class="stack">
         <div class="card">
@@ -66,7 +83,7 @@
         </div>
       </div>
       <div class="stack">
-        <div class="card">
+        <div class="card desktop-chart-card">
           <h2>График показателя</h2>
           <div class="canvas-box"><canvas id="markerChart"></canvas></div>
           <div class="footer-note">Сверху выбираешь группу и показатель — здесь всегда один график.</div>
@@ -188,7 +205,9 @@
     const values = rows.map(r=>r.value);
     const unit = rows[0] && rows[0].unit ? ' ('+rows[0].unit+')' : '';
 
-    const ctx = document.getElementById('markerChart');
+    const isMobile = window.matchMedia('(max-width: 960px)').matches;
+    const canvasId = isMobile ? 'markerChartMobile' : 'markerChart';
+    const ctx = document.getElementById(canvasId);
     if(chart) chart.destroy();
     chart = new Chart(ctx, {
       type: 'line',
