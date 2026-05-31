@@ -3,56 +3,179 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Медицинский кабинет</title>
+  <title>Patient Dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    :root { --bg:#f4f7fb; --card:#fff; --text:#1f2937; --muted:#6b7280; --border:#dbe3ee; --accent:#2563eb; --accent-soft:#dbeafe; --danger:#b91c1c; --shadow:0 10px 30px rgba(15,23,42,.08); --radius:18px; }
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,sans-serif;color:var(--text);background:var(--bg)}
-    .login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
-    .login-card,.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .login-card{width:100%;max-width:420px;padding:28px} h1,h2,h3{margin:0 0 12px} p{margin:0 0 12px;color:var(--muted)}
-    input,select,button{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--border);font-size:14px;background:#fff}
-    button{background:var(--accent);color:#fff;border:none;cursor:pointer;font-weight:600} .error{color:var(--danger);font-size:14px;margin-top:10px}
-    .app{display:none}.container{max-width:1400px;margin:0 auto;padding:24px}.header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:20px}
-    .header-meta{color:var(--muted);font-size:14px}.grid{display:grid;gap:18px}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .card{padding:20px}.info-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px}.info-item{background:#f8fafc;border:1px solid var(--border);border-radius:14px;padding:12px 14px}
-    .label{font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:4px}.value{font-size:15px;font-weight:600;white-space:pre-wrap;word-break:break-word}
-    .chips{display:flex;flex-wrap:wrap;gap:10px}.chip{padding:8px 12px;background:var(--accent-soft);color:#1d4ed8;border-radius:999px;font-size:13px;font-weight:600}
-    .toolbar{display:grid;grid-template-columns:1.1fr 1fr .8fr .8fr;gap:12px;margin-bottom:16px}.toolbar .field{display:flex;flex-direction:column;gap:6px}.toolbar label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-    .table-wrap{overflow:auto;border:1px solid var(--border);border-radius:16px} table{width:100%;border-collapse:collapse;min-width:980px;background:#fff}
-    th,td{padding:12px 14px;border-bottom:1px solid #e5e7eb;text-align:left;vertical-align:top;font-size:14px} th{background:#f8fafc;color:#334155;position:sticky;top:0;z-index:1}
-    tr:hover td{background:#fafcff}.small{font-size:13px;color:var(--muted)}.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px}.count{font-size:13px;color:var(--muted);background:#f8fafc;border:1px solid var(--border);padding:6px 10px;border-radius:999px} canvas{max-height:380px}
-    @media (max-width:980px){.grid-2,.toolbar,.info-list{grid-template-columns:1fr}.header{flex-direction:column}}
+    :root {
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --text: #1d2433;
+      --muted: #6b7280;
+      --line: #d7dce5;
+      --accent: #0f766e;
+      --danger: #b42318;
+      --warn: #b54708;
+      --ok: #027a48;
+      --shadow: 0 10px 30px rgba(16, 24, 40, 0.08);
+      --radius: 16px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, Arial, sans-serif; background: var(--bg); color: var(--text); }
+    .wrap { max-width: 1320px; margin: 0 auto; padding: 24px; }
+    .header { margin-bottom: 20px; }
+    .header h1 { margin: 0 0 6px; font-size: 30px; }
+    .header p { margin: 0; color: var(--muted); }
+    .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px; }
+    .span-12 { grid-column: span 12; }
+    .span-6 { grid-column: span 6; }
+    h2 { margin: 0 0 14px; font-size: 18px; }
+    .kv { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px 14px; }
+    .kv div { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; background: #fafbff; }
+    .kv strong { display: block; font-size: 12px; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: .04em; }
+    .controls { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 12px; }
+    label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+    input, select { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; font: inherit; background: white; }
+    .btn { margin-top: 12px; width: 100%; padding: 12px 14px; border: none; border-radius: 12px; background: #0f766e; color: white; font: inherit; font-weight: 600; cursor: pointer; }
+    .chart-box { height: 420px; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { padding: 10px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+    .badge { display: inline-flex; align-items: center; padding: 5px 9px; border-radius: 999px; font-size: 12px; font-weight: 600; background: #eef2ff; color: #364152; }
+    .low { background: #fef3f2; color: var(--danger); }
+    .high { background: #fff6ed; color: var(--warn); }
+    .normal { background: #ecfdf3; color: var(--ok); }
+    .muted { color: var(--muted); }
+    .list { margin: 0; padding-left: 18px; }
+    #loginScreen { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    @media (max-width: 980px) { .span-6 { grid-column: span 12; } .controls { grid-template-columns: 1fr; } .chart-box { height: 320px; } }
   </style>
 </head>
 <body>
-  <div class="login-screen" id="loginScreen"><div class="login-card"><h1>Медицинский кабинет</h1><p>Введите пароль для доступа к данным пациента.</p><input id="passwordInput" type="password" placeholder="Пароль" /><div style="height:12px"></div><button id="loginBtn">Войти</button><div id="loginError" class="error"></div></div></div>
-  <div class="app" id="app"><div class="container"><div class="header"><div><h1>Карта пациента</h1><div class="header-meta" id="headerMeta">Загрузка данных...</div></div></div>
-    <div class="grid grid-2"><div class="card"><div class="section-title"><h2>Паспортная часть</h2></div><div class="info-list" id="passportGrid"></div></div><div class="card"><div class="section-title"><h2>Диагнозы</h2></div><div class="chips" id="diagnosesChips"></div></div></div>
-    <div class="grid grid-2" style="margin-top:18px;"><div class="card"><div class="section-title"><h2>Исследования</h2></div><div id="studiesList" class="small"></div></div><div class="card"><div class="section-title"><h2>Терапия</h2></div><div id="therapyList" class="small"></div></div></div>
-    <div class="card" style="margin-top:18px;"><div class="section-title"><h2>График показателя</h2></div><div class="toolbar"><div class="field"><label for="metricSelect">Показатель</label><select id="metricSelect"></select></div><div class="field"><label for="groupSelect">Группа</label><select id="groupSelect"></select></div><div class="field"><label for="fromDate">С даты</label><input id="fromDate" type="date" /></div><div class="field"><label for="toDate">По дату</label><input id="toDate" type="date" /></div></div><canvas id="metricChart"></canvas></div>
-    <div class="card" style="margin-top:18px;"><div class="section-title"><h2>Все анализы</h2><div class="count" id="labsCount">0 записей</div></div><div class="toolbar"><div class="field"><label for="searchInput">Поиск</label><input id="searchInput" type="text" placeholder="Название анализа, комментарий, раздел" /></div><div class="field"><label for="sectionFilter">Раздел</label><select id="sectionFilter"></select></div><div class="field"><label for="labsFromDate">С даты</label><input id="labsFromDate" type="date" /></div><div class="field"><label for="labsToDate">По дату</label><input id="labsToDate" type="date" /></div></div><div class="table-wrap"><table><thead><tr><th>Дата</th><th>Раздел</th><th>Показатель</th><th>Результат</th><th>Ед.</th><th>Референс</th><th>Оценка</th><th>Тренд</th><th>Комментарий</th></tr></thead><tbody id="labsTableBody"></tbody></table></div></div>
-  </div></div>
-<script>
-const PASSWORD='alex2026'; const loginBtn=document.getElementById('loginBtn'); const passwordInput=document.getElementById('passwordInput'); const loginError=document.getElementById('loginError'); const loginScreen=document.getElementById('loginScreen'); const app=document.getElementById('app');
-let infoData={},labsData=[],studiesData=[],therapyData=[],diagnosesData=[],graphMap={},metricGroups={},chart;
-const normalize=v=>String(v??'').trim(); const safeArray=v=>Array.isArray(v)?v:[];
-function parseDateValue(v){const s=normalize(v); if(!s) return null; const c=s.replace(/\u0000/g,'').replace(/\s+/g,' ').trim(); if(/^\d{4}-\d{2}-\d{2}/.test(c)) return c.slice(0,10); if(/^\d{2}\.\d{2}\.\d{4}$/.test(c)){const[d,m,y]=c.split('.'); return `${y}-${m}-${d}`;} if(/^\d{4}$/.test(c)) return `${c}-01-01`; return null;}
-function displayDate(v){const iso=parseDateValue(v); if(!iso) return normalize(v)||'—'; const [y,m,d]=iso.split('-'); return `${d}.${m}.${y}`;}
-function makeInfoItem(label,value){return `<div class="info-item"><div class="label">${label}</div><div class="value">${normalize(value)||'—'}</div></div>`;}
-function renderPassport(){const p=infoData.passport||infoData.patient||infoData; document.getElementById('passportGrid').innerHTML=[makeInfoItem('ФИО',p.name||p.patient||p.fio),makeInfoItem('Дата рождения',p.birthdate||p.dob),makeInfoItem('Возраст',p.age),makeInfoItem('Пол',p.sex||p.gender),makeInfoItem('Рост',p.height||p.heightm),makeInfoItem('Вес',p.weight||p.weightkg),makeInfoItem('Талия',p.waist||p.waistcm),makeInfoItem('Дата осмотра',p.visitdate||p.date||p.examdate)].join(''); document.getElementById('headerMeta').textContent=`${normalize(p.name||p.patient||p.fio||'Пациент')} · обновлено автоматически из Excel`;}
-function renderDiagnoses(){const chips=safeArray(diagnosesData).map(item=>{const text=[item.code,item.diagnosis,item.name,item.comment].map(normalize).filter(Boolean).join(' — '); return text?`<div class="chip">${text}</div>`:'';}).join(''); document.getElementById('diagnosesChips').innerHTML=chips||'<div class="small">Нет данных</div>';}
-function renderStudies(){document.getElementById('studiesList').innerHTML=safeArray(studiesData).slice().reverse().map(item=>`<div style="padding:8px 0;border-bottom:1px solid #eef2f7;">${[displayDate(item.date),normalize(item.study),normalize(item.area),normalize(item.conclusion)].filter(Boolean).join(' · ')||'—'}</div>`).join('')||'Нет данных';}
-function renderTherapy(){document.getElementById('therapyList').innerHTML=safeArray(therapyData).slice().reverse().map(item=>`<div style="padding:8px 0;border-bottom:1px solid #eef2f7;">${[displayDate(item.date),normalize(item.intervention),normalize(item.dose),normalize(item.schedule),normalize(item.comment)].filter(Boolean).join(' · ')||'—'}</div>`).join('')||'Нет данных';}
-function buildMetricGroups(){metricGroups={}; Object.keys(graphMap).forEach(key=>{const n=key.replace(/^graph/i,'').toLowerCase(); let group='Прочее'; if(['totalcholesterol','ldl','hdl','triglycerides','hscrp','glucose','hba1c'].includes(n)) group='Метаболизм'; else if(['testosterone','fsh','lh','vitamind','weight','sbp','dbp','pulse'].includes(n)) group='Гормоны и витальные'; metricGroups[key]=group;});}
-function initChartControls(){buildMetricGroups(); const metricSelect=document.getElementById('metricSelect'); const groupSelect=document.getElementById('groupSelect'); const groups=['Все группы',...new Set(Object.values(metricGroups))]; groupSelect.innerHTML=groups.map(g=>`<option value="${g}">${g}</option>`).join('');
-function refreshMetricOptions(){const selectedGroup=groupSelect.value||'Все группы'; const keys=Object.keys(graphMap).filter(k=>selectedGroup==='Все группы'||metricGroups[k]===selectedGroup); metricSelect.innerHTML=keys.map(k=>`<option value="${k}">${k.replace(/^graph/i,'')}</option>`).join(''); if(keys.length) renderChart();}
-groupSelect.addEventListener('change',refreshMetricOptions); metricSelect.addEventListener('change',renderChart); document.getElementById('fromDate').addEventListener('change',renderChart); document.getElementById('toDate').addEventListener('change',renderChart); refreshMetricOptions();}
-function renderChart(){const key=document.getElementById('metricSelect').value; const from=document.getElementById('fromDate').value; const to=document.getElementById('toDate').value; let rows=safeArray(graphMap[key]).map(r=>({date:parseDateValue(r.date),value:Number(String(r.value).replace(',','.'))})).filter(r=>r.date&&!Number.isNaN(r.value)); if(from) rows=rows.filter(r=>r.date>=from); if(to) rows=rows.filter(r=>r.date<=to); rows=rows.sort((a,b)=>a.date.localeCompare(b.date)); const ctx=document.getElementById('metricChart').getContext('2d'); if(chart) chart.destroy(); chart=new Chart(ctx,{type:'line',data:{labels:rows.map(r=>displayDate(r.date)),datasets:[{label:key.replace(/^graph/i,''),data:rows.map(r=>r.value),borderColor:'#2563eb',backgroundColor:'rgba(37,99,235,0.15)',tension:.25,fill:true,pointRadius:4,pointHoverRadius:5}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:true}},scales:{y:{beginAtZero:false},x:{ticks:{maxRotation:0,autoSkip:true}}}}});}
-function initLabsControls(){const sectionFilter=document.getElementById('sectionFilter'); const sections=['Все разделы',...new Set(labsData.map(r=>normalize(r.section)).filter(Boolean))]; sectionFilter.innerHTML=sections.map(s=>`<option value="${s}">${s}</option>`).join(''); ['searchInput','sectionFilter','labsFromDate','labsToDate'].forEach(id=>{document.getElementById(id).addEventListener('input',renderLabsTable); document.getElementById(id).addEventListener('change',renderLabsTable);}); renderLabsTable();}
-function renderLabsTable(){const q=normalize(document.getElementById('searchInput').value).toLowerCase(); const section=document.getElementById('sectionFilter').value; const from=document.getElementById('labsFromDate').value; const to=document.getElementById('labsToDate').value; let rows=safeArray(labsData).filter(r=>{const date=parseDateValue(r.date); const hay=[r.section,r.marker,r.result,r.unit,r.reference,r.assessment,r.trend,r.clinicalnote].map(normalize).join(' ').toLowerCase(); if(q&&!hay.includes(q)) return false; if(section&&section!=='Все разделы'&&normalize(r.section)!==section) return false; if(from&&(!date||date<from)) return false; if(to&&(!date||date>to)) return false; return true;}); rows=rows.sort((a,b)=>{const da=parseDateValue(a.date)||'0000-00-00'; const db=parseDateValue(b.date)||'0000-00-00'; return db.localeCompare(da);}); document.getElementById('labsCount').textContent=`${rows.length} записей`; document.getElementById('labsTableBody').innerHTML=rows.map(r=>`<tr><td>${displayDate(r.date)}</td><td>${normalize(r.section)||'—'}</td><td><strong>${normalize(r.marker)||'—'}</strong></td><td>${normalize(r.result)||'—'}</td><td>${normalize(r.unit)||'—'}</td><td>${normalize(r.reference)||'—'}</td><td>${normalize(r.assessment)||'—'}</td><td>${normalize(r.trend)||'—'}</td><td>${normalize(r.clinicalnote)||'—'}</td></tr>`).join('');}
-async function loadData(){const [dataRes,infoRes]=await Promise.all([fetch('./assets/data.json',{cache:'no-store'}),fetch('./assets/info.json',{cache:'no-store'})]); const dataJson=await dataRes.json(); const infoJson=await infoRes.json(); infoData=infoJson||{}; labsData=safeArray(dataJson.labsfull||dataJson.labs||[]); studiesData=safeArray(dataJson.studies||[]); therapyData=safeArray(dataJson.therapyplan||[]); diagnosesData=safeArray(infoJson.diagnoses||dataJson.diagnoses||[]); graphMap=Object.fromEntries(Object.entries(dataJson).filter(([k,v])=>/^graph/i.test(k)&&Array.isArray(v))); renderPassport(); renderDiagnoses(); renderStudies(); renderTherapy(); initChartControls(); initLabsControls();}
-loginBtn.addEventListener('click',async()=>{if(passwordInput.value!==PASSWORD){loginError.textContent='Неверный пароль'; return;} loginError.textContent=''; loginScreen.style.display='none'; app.style.display='block'; try{await loadData();}catch(e){document.getElementById('headerMeta').textContent='Ошибка загрузки данных'; console.error(e);}}); passwordInput.addEventListener('keydown',e=>{if(e.key==='Enter') loginBtn.click();});
-</script>
+  <div id="loginScreen">
+    <div class="card" style="max-width:420px;width:100%;">
+      <h2>Вход</h2>
+      <p class="muted" style="margin:0 0 14px;">Введите пароль для просмотра дашборда.</p>
+      <label for="passwordInput">Пароль</label>
+      <input id="passwordInput" type="password" placeholder="Введите пароль" />
+      <button id="loginBtn" class="btn">Открыть</button>
+      <p id="loginError" style="display:none;color:#b42318;margin:12px 0 0;">Неверный пароль</p>
+    </div>
+  </div>
+  <div class="wrap" id="app" style="display:none;">
+    <div class="header">
+      <h1>Пациент — дашборд</h1>
+      <p>Один график наверху, выбор показателя сверху, таблица со всеми измерениями ниже.</p>
+    </div>
+    <div class="grid">
+      <section class="card span-12"><h2>Паспортная часть</h2><div id="passport" class="kv"></div></section>
+      <section class="card span-6"><h2>Диагнозы</h2><ul id="diagnoses" class="list"></ul></section>
+      <section class="card span-6"><h2>Терапия</h2><ul id="therapy" class="list"></ul></section>
+      <section class="card span-12">
+        <h2>Показатель</h2>
+        <div class="controls">
+          <div><label for="searchInput">Поиск показателя</label><input id="searchInput" type="text" placeholder="Например: HbA1c, B12, LDL" /></div>
+          <div><label for="groupSelect">Группа</label><select id="groupSelect"></select></div>
+          <div><label for="metricSelect">Показатель</label><select id="metricSelect"></select></div>
+        </div>
+      </section>
+      <section class="card span-12"><h2 id="chartTitle">График</h2><div class="chart-box"><canvas id="metricChart"></canvas></div></section>
+      <section class="card span-12">
+        <h2>Все измерения</h2>
+        <div style="overflow:auto;">
+          <table>
+            <thead><tr><th>Дата</th><th>Группа</th><th>Показатель</th><th>Результат</th><th>Ед.</th><th>Референс</th><th>Статус</th><th>Комментарий</th></tr></thead>
+            <tbody id="labsBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script>
+    const DASHBOARD_PASSWORD = 'alex2026';
+    let state = { payload: null, filteredMetrics: [], selectedMetric: '' };
+    let chart;
+    function fmt(x) { return typeof x === 'number' ? x.toLocaleString('ru-RU', { maximumFractionDigits: 2 }) : (x || ''); }
+    function metricStatus(row) {
+      const v = row.result;
+      if (typeof v !== 'number') return { label: '', cls: '' };
+      if (typeof row.lower_ref === 'number' && v < row.lower_ref) return { label: 'Ниже нормы', cls: 'low' };
+      if (typeof row.upper_ref === 'number' && v > row.upper_ref) return { label: 'Выше нормы', cls: 'high' };
+      if (typeof row.lower_ref === 'number' || typeof row.upper_ref === 'number') return { label: 'Норма', cls: 'normal' };
+      return { label: 'Без границ', cls: '' };
+    }
+    function renderPassport(patient) {
+      const el = document.getElementById('passport'); el.innerHTML = '';
+      Object.entries(patient || {}).forEach(([k, v]) => { const item = document.createElement('div'); item.innerHTML = `<strong>${k}</strong>${v}`; el.appendChild(item); });
+    }
+    function renderList(id, rows, formatter) {
+      const el = document.getElementById(id); el.innerHTML = '';
+      (rows || []).forEach(row => { const li = document.createElement('li'); li.textContent = formatter(row); el.appendChild(li); });
+    }
+    function buildMetricOptions() {
+      const search = document.getElementById('searchInput').value.trim().toLowerCase();
+      const group = document.getElementById('groupSelect').value;
+      const metrics = (state.payload.metrics || []).filter(m => {
+        const byGroup = group === 'all' || m.group === group;
+        const text = `${m.label} ${m.group} ${m.key}`.toLowerCase();
+        const bySearch = !search || text.includes(search);
+        return byGroup && bySearch;
+      });
+      state.filteredMetrics = metrics;
+      const metricSelect = document.getElementById('metricSelect');
+      metricSelect.innerHTML = metrics.map(m => `<option value="${m.key}">${m.label}${m.group ? ' — ' + m.group : ''}</option>`).join('');
+      if (!metrics.find(m => m.key === state.selectedMetric)) state.selectedMetric = metrics[0] ? metrics[0].key : '';
+      metricSelect.value = state.selectedMetric;
+    }
+    function renderChart() {
+      const rows = (state.payload.labs || []).filter(r => r.marker_key === state.selectedMetric).slice().sort((a, b) => a.date.localeCompare(b.date));
+      const metric = (state.payload.metrics || []).find(m => m.key === state.selectedMetric);
+      document.getElementById('chartTitle').textContent = metric ? `График: ${metric.label}` : 'График';
+      const labels = rows.map(r => r.date), values = rows.map(r => r.result), upper = rows.map(r => typeof r.upper_ref === 'number' ? r.upper_ref : null), lower = rows.map(r => typeof r.lower_ref === 'number' ? r.lower_ref : null);
+      if (chart) chart.destroy();
+      chart = new Chart(document.getElementById('metricChart'), {
+        type: 'line',
+        data: { labels, datasets: [
+          { label: metric ? metric.label : 'Показатель', data: values, borderColor: '#0f766e', backgroundColor: 'rgba(15,118,110,.12)', tension: 0.25, pointRadius: 4, pointHoverRadius: 6, fill: false },
+          { label: 'Нижняя граница', data: lower, borderColor: 'rgba(180,35,24,.5)', borderDash: [6, 6], pointRadius: 0, tension: 0 },
+          { label: 'Верхняя граница', data: upper, borderColor: 'rgba(181,71,8,.5)', borderDash: [6, 6], pointRadius: 0, tension: 0 }
+        ]},
+        options: {
+          responsive: true, maintainAspectRatio: false, interaction: { mode: 'index', intersect: false },
+          plugins: { tooltip: { callbacks: { afterBody(items) { const row = rows[items[0].dataIndex]; const parts = []; if (row.reference_text) parts.push(`Референс: ${row.reference_text}`); if (row.unit) parts.push(`Ед.: ${row.unit}`); return parts; } } } },
+          scales: { y: { beginAtZero: false }, x: { ticks: { maxRotation: 0 } } }
+        }
+      });
+    }
+    function renderTable() {
+      const body = document.getElementById('labsBody');
+      const rows = (state.payload.labs || []).slice().sort((a, b) => b.date.localeCompare(a.date));
+      body.innerHTML = rows.map(r => { const status = metricStatus(r); return `
+        <tr><td>${r.date}</td><td>${r.section || ''}</td><td>${r.marker}</td><td>${fmt(r.result)}</td><td>${r.unit || ''}</td><td>${r.reference_text || ''}</td><td>${status.label ? `<span class="badge ${status.cls}">${status.label}</span>` : ''}</td><td class="muted">${r.clinical_note || r.assessment || r.trend || ''}</td></tr>`; }).join('');
+    }
+    async function init() {
+      const res = await fetch('./assets/patient-data.json');
+      const payload = await res.json();
+      state.payload = payload;
+      renderPassport(payload.patient);
+      renderList('diagnoses', payload.diagnoses, row => Object.values(row).join(' — '));
+      renderList('therapy', payload.therapy, row => Object.values(row).join(' — '));
+      renderTable();
+      const groups = ['all', ...new Set((payload.metrics || []).map(x => x.group).filter(Boolean))];
+      document.getElementById('groupSelect').innerHTML = groups.map(g => `<option value="${g}">${g === 'all' ? 'Все группы' : g}</option>`).join('');
+      buildMetricOptions();
+      renderChart();
+      document.getElementById('searchInput').addEventListener('input', () => { buildMetricOptions(); renderChart(); });
+      document.getElementById('groupSelect').addEventListener('change', () => { buildMetricOptions(); renderChart(); });
+      document.getElementById('metricSelect').addEventListener('change', e => { state.selectedMetric = e.target.value; renderChart(); });
+    }
+    function unlock() { document.getElementById('loginScreen').style.display = 'none'; document.getElementById('app').style.display = 'block'; init(); }
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      const ok = document.getElementById('passwordInput').value === DASHBOARD_PASSWORD;
+      document.getElementById('loginError').style.display = ok ? 'none' : 'block';
+      if (ok) unlock();
+    });
+    document.getElementById('passwordInput').addEventListener('keydown', e => { if (e.key === 'Enter') document.getElementById('loginBtn').click(); });
+  </script>
 </body>
 </html>
