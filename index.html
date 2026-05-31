@@ -1,513 +1,283 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Аноним — медицинские показатели</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>patient-dashboard</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     :root {
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --text: #162033;
-      --muted: #6b7280;
-      --line: #d9dfeb;
-      --primary: #0b6bcb;
-      --primary-soft: rgba(11, 107, 203, 0.12);
-      --accent: #0f9d7a;
-      --danger: #d54c4c;
-      --radius: 16px;
-      --shadow: 0 10px 30px rgba(22, 32, 51, 0.08);
+      --bg:#f7f6f2; --card:#ffffff; --text:#222; --muted:#666; --line:#ddd; --accent:#0b6b6f;
     }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.45;
-    }
-
-    .wrap {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 16px;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, #0b6bcb, #1d8ef0);
-      color: #fff;
-      border-radius: 20px;
-      padding: 20px 18px;
-      box-shadow: var(--shadow);
-      margin-bottom: 16px;
-    }
-
-    .hero h1 {
-      margin: 0 0 8px 0;
-      font-size: 28px;
-    }
-
-    .hero p {
-      margin: 0;
-      opacity: 0.95;
-      font-size: 15px;
-    }
-
-    .section {
-      background: var(--card);
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadow);
-      margin-bottom: 16px;
-    }
-
-    .section h2 {
-      margin: 0 0 12px 0;
-      font-size: 22px;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .stat {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 14px;
-      padding: 12px;
-    }
-
-    .stat-label {
-      font-size: 12px;
-      opacity: 0.85;
-      margin-bottom: 6px;
-    }
-
-    .stat-value {
-      font-size: 20px;
-      font-weight: 700;
-    }
-
-    .top-controls {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .input, .select {
-      width: 100%;
-      min-height: 44px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 10px 12px;
-      background: #fff;
-      font-size: 15px;
-      color: var(--text);
-    }
-
-    .chart-panel {
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 12px;
-      background: #fff;
-    }
-
-    .chart-meta {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-bottom: 10px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .chart-box {
-      position: relative;
-      height: 360px;
-    }
-
-    .table-wrap {
-      overflow: auto;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 760px;
-      background: #fff;
-    }
-
-    th, td {
-      padding: 12px 10px;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
-      vertical-align: top;
-      font-size: 14px;
-    }
-
-    th {
-      background: #f8fafc;
-      position: sticky;
-      top: 0;
-      z-index: 1;
-    }
-
-    .muted { color: var(--muted); }
-
-    .badge {
-      display: inline-block;
-      padding: 5px 9px;
-      border-radius: 999px;
-      font-size: 12px;
-      font-weight: 600;
-      background: var(--primary-soft);
-      color: var(--primary);
-    }
-
-    .status-ok { color: var(--accent); font-weight: 600; }
-    .status-high, .status-low { color: var(--danger); font-weight: 600; }
-
-    .empty {
-      padding: 18px;
-      border: 1px dashed var(--line);
-      border-radius: 14px;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    .error-box {
-      margin: 16px;
-      padding: 14px;
-      border-radius: 14px;
-      background: #fff1f1;
-      color: #a33a3a;
-      border: 1px solid #f0c9c9;
-    }
-
-    @media (max-width: 760px) {
-      .hero h1 { font-size: 24px; }
-      .top-controls { grid-template-columns: 1fr; }
-      .wrap { padding: 12px; }
-      .section { padding: 14px; }
-      .chart-box { height: 300px; }
-    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1200px;margin:0 auto;padding:24px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:16px}
+    h1,h2{margin:0 0 12px}
+    .controls{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+    label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    input,select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:10px;border-bottom:1px solid #eee;text-align:left;vertical-align:top}
+    th{background:#fafafa}
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:16px}
+    .chips{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{padding:6px 10px;border-radius:999px;background:#eef6f6;color:var(--accent);font-size:13px}
+    .muted{color:var(--muted)}
+    @media (max-width: 900px){.controls,.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <div id="app" style="display:none;">
-    <div class="wrap">
-      <section class="hero">
-        <h1>Аноним — медицинские показатели</h1>
-        <p>Выбор показателя находится сверху, а ниже отображается только один нужный график.</p>
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-label">Пациент</div>
-            <div class="stat-value">Аноним</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Всего записей</div>
-            <div class="stat-value" id="total-records">0</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Показателей</div>
-            <div class="stat-value" id="total-markers">0</div>
-          </div>
-          <div class="stat">
-            <div class="stat-label">Последняя дата</div>
-            <div class="stat-value" id="latest-date">—</div>
-          </div>
-        </div>
-      </section>
+  <div class="wrap">
+    <div class="card">
+      <h1>Карта пациента</h1>
+      <div id="passportBlock" class="muted">Загрузка...</div>
+    </div>
 
-      <section class="section">
-        <h2>Просмотр графика</h2>
-        <div class="top-controls">
-          <input id="searchInput" class="input" type="text" placeholder="Поиск по показателю или комментарию..." />
-          <select id="markerSelect" class="select"></select>
-          <select id="statusSelect" class="select">
-            <option value="">Любой статус</option>
-            <option value="ok">В пределах нормы</option>
+    <div class="grid">
+      <div class="card">
+        <h2>Диагнозы</h2>
+        <div id="diagnosesBlock"></div>
+      </div>
+      <div class="card">
+        <h2>Ключевые разделы</h2>
+        <div id="studiesBlock"></div>
+        <div style="height:12px"></div>
+        <div id="therapyBlock"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Фильтры</h2>
+      <div class="controls">
+        <div>
+          <label for="groupSelect">Группа</label>
+          <select id="groupSelect"></select>
+        </div>
+        <div>
+          <label for="markerSelect">Показатель</label>
+          <select id="markerSelect"></select>
+        </div>
+        <div>
+          <label for="searchInput">Поиск</label>
+          <input id="searchInput" type="text" placeholder="Например, холестерин" />
+        </div>
+        <div>
+          <label for="statusSelect">Статус</label>
+          <select id="statusSelect">
+            <option value="all">Все</option>
             <option value="high">Выше нормы</option>
             <option value="low">Ниже нормы</option>
+            <option value="normal">В норме</option>
+            <option value="no_ref">Без границ</option>
           </select>
         </div>
-        <div id="single-chart" class="chart-panel"></div>
-      </section>
+      </div>
+    </div>
 
-      <section class="section">
-        <h2>Таблица анализов</h2>
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Дата</th>
-                <th>Показатель</th>
-                <th>Значение</th>
-                <th>Единицы</th>
-                <th>Референс</th>
-                <th>Статус</th>
-                <th>Комментарий</th>
-              </tr>
-            </thead>
-            <tbody id="data-table-body"></tbody>
-          </table>
-        </div>
-      </section>
+    <div class="card">
+      <h2>График</h2>
+      <canvas id="chart" height="110"></canvas>
+    </div>
+
+    <div class="card">
+      <h2>Таблица</h2>
+      <div style="overflow:auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Дата</th>
+              <th>Группа</th>
+              <th>Показатель</th>
+              <th>Значение</th>
+              <th>Единицы</th>
+              <th>Нижняя граница</th>
+              <th>Верхняя граница</th>
+              <th>Комментарий</th>
+              <th>Статус</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
     </div>
   </div>
 
-  <script>
-    const PAGE_PASSWORD = "alex2026";
-    const labelsRu = {
-      ALT: "АЛТ", AST: "АСТ", Creatinine: "Креатинин", Urea: "Мочевина",
-      Hemoglobin: "Гемоглобин", Platelets: "Тромбоциты", Leukocytes: "Лейкоциты",
-      CRP: "С-реактивный белок", Glucose: "Глюкоза", Bilirubin: "Билирубин",
-      Sodium: "Натрий", Potassium: "Калий", Chloride: "Хлор", Albumin: "Альбумин",
-      TotalProtein: "Общий белок", Ferritin: "Ферритин", HbA1c: "Гликированный гемоглобин",
-      LDL: "ЛПНП", "ЛПНП": "ЛПНП", HDL: "ЛПВП", "ЛПВП": "ЛПВП",
-      Triglycerides: "Триглицериды", Cholesterol: "Общий холестерин",
-      "Общий холестерин": "Общий холестерин", ESR: "СОЭ", WBC: "Лейкоциты",
-      RBC: "Эритроциты", HGB: "Гемоглобин", PLT: "Тромбоциты", "D 25-OH": "Витамин D",
-      hsCRP: "Высокочувствительный СРБ", hs_CRP: "Высокочувствительный СРБ", SHBG: "ГСПГ",
-      Testosterone: "Тестостерон", Insulin: "Инсулин", VitaminB12: "Витамин B12",
-      B12: "Витамин B12", Iron: "Железо", Homocysteine: "Гомоцистеин", TSH: "ТТГ", FreeT4: "Свободный Т4"
-    };
+<script>
+let allRows = [];
+let info = {};
+let chart;
 
-    let rawData = [];
-    let filteredData = [];
-    let chartInstance = null;
+function parseNum(v){
+  if(v === null || v === undefined || v === '') return null;
+  const n = Number(String(v).replace(/\s/g,'').replace(',','.'));
+  return Number.isFinite(n) ? n : null;
+}
 
-    function checkPassword() {
-      const entered = window.prompt("Введите пароль для доступа к странице:");
-      if (entered !== PAGE_PASSWORD) {
-        document.body.innerHTML = '<div class="error-box">Неверный пароль.</div>';
-        return false;
-      }
-      document.getElementById("app").style.display = "block";
-      return true;
-    }
+function getStatus(row){
+  const value = parseNum(row['Значение']);
+  const low = parseNum(row['Нижняя граница']);
+  const high = parseNum(row['Верхняя граница']);
+  if(value === null) return 'Без значения';
+  if(low === null && high === null) return 'Без границ';
+  if(low !== null && value < low) return 'Ниже нормы';
+  if(high !== null && value > high) return 'Выше нормы';
+  return 'В норме';
+}
 
-    function ruLabel(name) {
-      if (!name) return "Без названия";
-      const cleaned = String(name).trim();
-      return labelsRu[cleaned] || cleaned;
-    }
+function statusCode(text){
+  if(text === 'Выше нормы') return 'high';
+  if(text === 'Ниже нормы') return 'low';
+  if(text === 'В норме') return 'normal';
+  if(text === 'Без границ') return 'no_ref';
+  return 'all';
+}
 
-    function pick(obj, keys) {
-      for (const key of keys) {
-        if (obj[key] !== undefined && obj[key] !== null && obj[key] !== "") return obj[key];
-      }
-      return "";
-    }
+function fillInfo(){
+  const passportBlock = document.getElementById('passportBlock');
+  const diagnosesBlock = document.getElementById('diagnosesBlock');
+  const studiesBlock = document.getElementById('studiesBlock');
+  const therapyBlock = document.getElementById('therapyBlock');
 
-    function parseNumber(value) {
-      if (value === null || value === undefined || value === "") return NaN;
-      return parseFloat(String(value).replace(/\s/g, "").replace(",", "."));
-    }
+  const passportRows = info.passport || [];
+  passportBlock.innerHTML = passportRows.length
+    ? passportRows.map(r => `<div>${Object.entries(r).filter(([,v]) => String(v).trim() !== '').map(([k,v]) => `<strong>${k}:</strong> ${v}`).join(' · ')}</div>`).join('')
+    : '<div class="muted">Нет данных</div>';
 
-    function normalizeRow(row) {
-      const marker = pick(row, ["marker", "parameter", "name", "Показатель", "Анализ", "Marker", "Parameter"]);
-      const date = pick(row, ["date", "Дата", "Date", "sheet"]);
-      const valueRaw = pick(row, ["value", "Значение", "Value"]);
-      const unit = pick(row, ["unit", "units", "Единицы", "Ед", "Unit"]);
-      const refLowRaw = pick(row, ["refLow", "referenceLow", "Нижняя граница", "РефНиз", "low"]);
-      const refHighRaw = pick(row, ["refHigh", "referenceHigh", "Верхняя граница", "РефВерх", "high"]);
-      const comment = pick(row, ["comment", "Комментарий", "notes", "Note"]);
+  const diagnoses = info.diagnoses || [];
+  diagnosesBlock.innerHTML = diagnoses.length
+    ? `<div class="chips">${diagnoses.map(r => `<span class="chip">${Object.values(r).filter(v => String(v).trim() !== '').join(' — ')}</span>`).join('')}</div>`
+    : '<div class="muted">Нет диагнозов</div>';
 
-      return {
-        patient: "Аноним",
-        marker: String(marker || "").trim(),
-        markerRu: ruLabel(marker),
-        date: String(date || "").trim(),
-        value: parseNumber(valueRaw),
-        unit: String(unit || "").trim(),
-        refLow: refLowRaw === "" ? null : parseNumber(refLowRaw),
-        refHigh: refHighRaw === "" ? null : parseNumber(refHighRaw),
-        comment: String(comment || "").trim()
-      };
-    }
+  const studies = info.studies || [];
+  studiesBlock.innerHTML = studies.length
+    ? `<h3 style="margin:0 0 8px">Исследования</h3><div>${studies.map(r => `<div style="margin:0 0 8px">${Object.values(r).filter(v => String(v).trim() !== '').join(' — ')}</div>`).join('')}</div>`
+    : '<div class="muted">Нет исследований</div>';
 
-    function formatDate(dateStr) {
-      if (!dateStr) return "—";
-      const d = new Date(dateStr);
-      if (Number.isNaN(d.getTime())) return dateStr;
-      return d.toLocaleDateString("ru-RU");
-    }
+  const therapy = info.therapy || [];
+  therapyBlock.innerHTML = therapy.length
+    ? `<h3 style="margin:0 0 8px">Терапия</h3><div>${therapy.map(r => `<div style="margin:0 0 8px">${Object.values(r).filter(v => String(v).trim() !== '').join(' — ')}</div>`).join('')}</div>`
+    : '<div class="muted">Нет данных по терапии</div>';
+}
 
-    function formatValue(value) {
-      if (value === null || value === undefined || Number.isNaN(value)) return "—";
-      return String(value).replace(".", ",");
-    }
+function unique(arr){ return [...new Set(arr)].filter(Boolean).sort((a,b)=>String(a).localeCompare(String(b),'ru')); }
 
-    function getStatus(row) {
-      if (!Number.isNaN(row.value) && row.refLow !== null && !Number.isNaN(row.refLow) && row.value < row.refLow) {
-        return { key: "low", text: "Ниже нормы", className: "status-low" };
-      }
-      if (!Number.isNaN(row.value) && row.refHigh !== null && !Number.isNaN(row.refHigh) && row.value > row.refHigh) {
-        return { key: "high", text: "Выше нормы", className: "status-high" };
-      }
-      return { key: "ok", text: "В пределах нормы", className: "status-ok" };
-    }
+function fillFilters(){
+  const groupSelect = document.getElementById('groupSelect');
+  const markerSelect = document.getElementById('markerSelect');
+  const selectedGroup = groupSelect.value || 'all';
 
-    function renderStats(data) {
-      document.getElementById("total-records").textContent = data.length;
-      document.getElementById("total-markers").textContent = [...new Set(data.map(x => x.markerRu).filter(Boolean))].length;
-      const latest = [...data].filter(x => x.date).sort((a,b) => new Date(a.date) - new Date(b.date)).at(-1);
-      document.getElementById("latest-date").textContent = latest ? formatDate(latest.date) : "—";
-    }
+  const groups = unique(allRows.map(r => r['Группа']));
+  groupSelect.innerHTML = `<option value="all">Все группы</option>` + groups.map(g => `<option value="${g}">${g}</option>`).join('');
+  groupSelect.value = groups.includes(selectedGroup) ? selectedGroup : 'all';
 
-    function fillMarkerSelect(data) {
-      const select = document.getElementById("markerSelect");
-      const markers = [...new Set(data.map(x => x.markerRu).filter(Boolean))].sort((a, b) => a.localeCompare(b, "ru"));
-      select.innerHTML = markers.map(m => `<option value="${m}">${m}</option>`).join("");
-    }
+  const source = groupSelect.value === 'all' ? allRows : allRows.filter(r => r['Группа'] === groupSelect.value);
+  const markers = unique(source.map(r => r['Показатель']));
+  const currentMarker = markerSelect.value;
+  markerSelect.innerHTML = `<option value="all">Все показатели</option>` + markers.map(m => `<option value="${m}">${m}</option>`).join('');
+  markerSelect.value = markers.includes(currentMarker) ? currentMarker : (markers[0] || 'all');
+}
 
-    function renderTable(data) {
-      const tbody = document.getElementById("data-table-body");
-      if (!data.length) {
-        tbody.innerHTML = `<tr><td colspan="7"><div class="empty">Нет данных для отображения</div></td></tr>`;
-        return;
-      }
+function getFilteredRows(){
+  const group = document.getElementById('groupSelect').value;
+  const marker = document.getElementById('markerSelect').value;
+  const search = document.getElementById('searchInput').value.trim().toLowerCase();
+  const status = document.getElementById('statusSelect').value;
 
-      const sorted = [...data].sort((a, b) => new Date(b.date) - new Date(a.date));
-      tbody.innerHTML = sorted.map(row => {
-        const status = getStatus(row);
-        const ref = (row.refLow !== null || row.refHigh !== null) ? `${row.refLow ?? "—"} – ${row.refHigh ?? "—"}` : "—";
-        return `
-          <tr>
-            <td>${formatDate(row.date)}</td>
-            <td><span class="badge">${row.markerRu}</span></td>
-            <td>${formatValue(row.value)}</td>
-            <td>${row.unit || "—"}</td>
-            <td>${ref}</td>
-            <td class="${status.className}">${status.text}</td>
-            <td class="muted">${row.comment || "—"}</td>
-          </tr>`;
-      }).join("");
-    }
+  return allRows.filter(r => {
+    const s = getStatus(r);
+    const matchesGroup = group === 'all' || r['Группа'] === group;
+    const matchesMarker = marker === 'all' || r['Показатель'] === marker;
+    const hay = [r['Показатель'], r['Группа'], r['Комментарий'], r['Дата']].join(' ').toLowerCase();
+    const matchesSearch = !search || hay.includes(search);
+    const matchesStatus = status === 'all' || statusCode(s) === status;
+    return matchesGroup && matchesMarker && matchesSearch && matchesStatus;
+  }).sort((a,b)=> String(b['Дата']).localeCompare(String(a['Дата'])));
+}
 
-    function renderSingleChart(data) {
-      const container = document.getElementById("single-chart");
-      if (chartInstance) {
-        chartInstance.destroy();
-        chartInstance = null;
-      }
+function renderTable(){
+  const body = document.getElementById('tableBody');
+  const rows = getFilteredRows();
+  body.innerHTML = rows.map(r => `
+    <tr>
+      <td>${r['Дата'] || ''}</td>
+      <td>${r['Группа'] || ''}</td>
+      <td>${r['Показатель'] || ''}</td>
+      <td>${r['Значение'] ?? ''}</td>
+      <td>${r['Единицы'] || ''}</td>
+      <td>${r['Нижняя граница'] ?? ''}</td>
+      <td>${r['Верхняя граница'] ?? ''}</td>
+      <td>${r['Комментарий'] || ''}</td>
+      <td>${getStatus(r)}</td>
+    </tr>
+  `).join('') || '<tr><td colspan="9">Нет данных</td></tr>';
+}
 
-      if (!data.length) {
-        container.innerHTML = `<div class="empty">Нет данных для выбранного показателя</div>`;
-        return;
-      }
+function renderChart(){
+  const marker = document.getElementById('markerSelect').value;
+  const group = document.getElementById('groupSelect').value;
+  let rows = allRows.filter(r => (group === 'all' || r['Группа'] === group));
+  if(marker !== 'all') rows = rows.filter(r => r['Показатель'] === marker);
+  else {
+    const markers = unique(rows.map(r => r['Показатель']));
+    if(markers.length) rows = rows.filter(r => r['Показатель'] === markers[0]);
+  }
+  rows = rows
+    .filter(r => parseNum(r['Значение']) !== null)
+    .sort((a,b)=> String(a['Дата']).localeCompare(String(b['Дата']));
 
-      const selectedMarker = document.getElementById("markerSelect").value;
-      const rows = data.filter(r => r.markerRu === selectedMarker && !Number.isNaN(r.value));
-      if (!rows.length) {
-        container.innerHTML = `<div class="empty">По выбранному показателю нет подходящих записей</div>`;
-        return;
-      }
-
-      const sorted = [...rows].sort((a, b) => new Date(a.date) - new Date(b.date));
-      const latest = sorted[sorted.length - 1];
-      container.innerHTML = `
-        <div class="chart-meta">
-          <span>Показатель: <strong>${selectedMarker}</strong></span>
-          <span>Последнее значение: <strong>${formatValue(latest.value)}</strong> ${latest.unit || ""}</span>
-          <span>Последняя дата: <strong>${formatDate(latest.date)}</strong></span>
-        </div>
-        <div class="chart-box"><canvas id="mainChart"></canvas></div>`;
-
-      const ctx = document.getElementById("mainChart").getContext("2d");
-      chartInstance = new Chart(ctx, {
-        type: "line",
-        data: {
-          labels: sorted.map(r => formatDate(r.date)),
-          datasets: [{
-            label: selectedMarker,
-            data: sorted.map(r => r.value),
-            borderColor: "#0b6bcb",
-            backgroundColor: "rgba(11,107,203,0.12)",
-            fill: true,
-            pointRadius: 4,
-            pointHoverRadius: 6,
-            tension: 0.25
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          interaction: { mode: "index", intersect: false },
-          plugins: { legend: { display: false } },
-          scales: {
-            x: { title: { display: true, text: "Дата" } },
-            y: { title: { display: true, text: latest.unit ? `Значение (${latest.unit})` : "Значение" } }
-          }
-        }
-      });
-    }
-
-    function applyFilters() {
-      const query = document.getElementById("searchInput").value.trim().toLowerCase();
-      const status = document.getElementById("statusSelect").value;
-
-      filteredData = rawData.filter(row => {
-        const rowStatus = getStatus(row).key;
-        const matchesQuery = !query || row.markerRu.toLowerCase().includes(query) || String(row.comment || "").toLowerCase().includes(query);
-        const matchesStatus = !status || rowStatus === status;
-        return matchesQuery && matchesStatus;
-      });
-
-      const markerSelect = document.getElementById("markerSelect");
-      const current = markerSelect.value;
-      const availableMarkers = [...new Set(filteredData.map(x => x.markerRu).filter(Boolean))].sort((a, b) => a.localeCompare(b, "ru"));
-      markerSelect.innerHTML = availableMarkers.length
-        ? availableMarkers.map(m => `<option value="${m}" ${m === current ? 'selected' : ''}>${m}</option>`).join("")
-        : "";
-
-      if (!availableMarkers.length) {
-        renderTable([]);
-        renderSingleChart([]);
-        return;
-      }
-
-      if (!availableMarkers.includes(markerSelect.value)) markerSelect.value = availableMarkers[0];
-      renderTable(filteredData);
-      renderSingleChart(filteredData);
-    }
-
-    async function init() {
-      if (!checkPassword()) return;
-      try {
-        const res = await fetch("./assets/data.json");
-        const json = await res.json();
-        rawData = Array.isArray(json) ? json.map(normalizeRow).filter(r => r.marker && !Number.isNaN(r.value)) : [];
-        renderStats(rawData);
-        fillMarkerSelect(rawData);
-        filteredData = [...rawData];
-        renderTable(filteredData);
-        renderSingleChart(filteredData);
-        document.getElementById("searchInput").addEventListener("input", applyFilters);
-        document.getElementById("markerSelect").addEventListener("change", () => {
-          renderTable(filteredData);
-          renderSingleChart(filteredData);
-        });
-        document.getElementById("statusSelect").addEventListener("change", applyFilters);
-      } catch (error) {
-        document.getElementById("app").style.display = "block";
-        document.getElementById("single-chart").innerHTML = `<div class="empty">Не удалось загрузить файл data.json</div>`;
-        document.getElementById("data-table-body").innerHTML = `<tr><td colspan="7"><div class="empty">Ошибка загрузки данных</div></td></tr>`;
+  const ctx = document.getElementById('chart');
+  if(chart) chart.destroy();
+  chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: rows.map(r => r['Дата']),
+      datasets: [{
+        label: rows[0]?.['Показатель'] || 'Показатель',
+        data: rows.map(r => parseNum(r['Значение'])),
+        borderColor: '#0b6b6f',
+        backgroundColor: 'rgba(11,107,111,.12)',
+        fill: true,
+        tension: .25,
+        pointRadius: 4,
+        pointHoverRadius: 6
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: true,
+      plugins: { legend: { display: true } },
+      scales: {
+        x: { title: { display: true, text: 'Дата' } },
+        y: { title: { display: true, text: 'Значение' } }
       }
     }
+  });
+}
 
-    init();
-  </script>
+function rerender(){
+  renderTable();
+  renderChart();
+}
+
+async function init(){
+  const [dataRes, infoRes] = await Promise.all([
+    fetch('./assets/data.json'),
+    fetch('./assets/info.json')
+  ]);
+  allRows = await dataRes.json();
+  info = await infoRes.json();
+  fillInfo();
+  fillFilters();
+  rerender();
+
+  document.getElementById('groupSelect').addEventListener('change', () => { fillFilters(); rerender(); });
+  document.getElementById('markerSelect').addEventListener('change', rerender);
+  document.getElementById('searchInput').addEventListener('input', renderTable);
+  document.getElementById('statusSelect').addEventListener('change', renderTable);
+}
+
+init();
+</script>
 </body>
 </html>
