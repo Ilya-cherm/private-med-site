@@ -535,11 +535,11 @@
 
         const chart = new Chart(canvas.getContext("2d"), {
           type: "line",
-           {
+          data: {
             labels: rows.map(r => formatDate(r.date)),
             datasets: [{
               label: markerRu,
-               rows.map(r => r.value),
+              data: rows.map(r => r.value),
               borderColor: "#0b6bcb",
               backgroundColor: "rgba(11,107,203,0.12)",
               fill: true,
