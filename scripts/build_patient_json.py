@@ -1,17 +1,12 @@
 from pathlib import Path
 import json
-import re
 import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / 'patient.xlsx'
+INFO_XLSX = ROOT / 'patient_data.xlsx'
+DATA_XLSX = ROOT / 'patient_full.xlsx'
 ASSETS = ROOT / 'assets'
-ASSETS.mkdir(parents=True, exist_ok=True)
-
-
-def norm_cols(df):
-    df.columns = [str(c).strip().lower().replace(' ', '') for c in df.columns]
-    return df
+ASSETS.mkdir(exist_ok=True)
 
 
 def clean(v):
@@ -27,71 +22,108 @@ def clean(v):
     return v
 
 
-def records(df):
+def norm_cols(df):
+    df.columns = [str(c).strip().lower() for c in df.columns]
+    return df
+
+
+def to_records(df):
     return [{k: clean(v) for k, v in r.items()} for r in df.to_dict(orient='records')]
 
-xl = pd.ExcelFile(SRC)
-sheets = {s.lower(): s for s in xl.sheet_names}
+# --- patient_data.xlsx: passport / diagnoses / studies / therapy ---
+info_xl = pd.ExcelFile(INFO_XLSX)
+info_sheets = {s.lower(): s for s in info_xl.sheet_names}
 
-passport = pd.read_excel(SRC, sheet_name=sheets['passport'], header=None)
-passport_items = []
-for row in passport.itertuples(index=False):
-    val = next((clean(x) for x in row if pd.notna(x) and str(x).strip()), None)
-    if val is not None:
-        passport_items.append(str(val))
+passport_raw = []
+if 'passport' in info_sheets:
+    ps = pd.read_excel(INFO_XLSX, sheet_name=info_sheets['passport'], header=None)
+    for row in ps.itertuples(index=False):
+        vals = [x for x in row if pd.notna(x) and str(x).strip()]
+        if vals:
+            passport_raw.append(str(vals[0]))
 
-passport_map = {}
-for item in passport_items:
+passport = {}
+for item in passport_raw:
     if ':' in item:
         k, v = item.split(':', 1)
-        passport_map[k.strip()] = v.strip()
+        passport[k.strip()] = v.strip()
 
-try:
-    diagnoses_df = pd.read_excel(SRC, sheet_name=sheets['diagnoses'])
-    diagnoses = [str(x).strip() for x in diagnoses_df.iloc[:,0].dropna().tolist() if str(x).strip() and str(x).strip().lower() != 'diagnosis']
-except Exception:
+if 'diagnoses' in info_sheets:
+    diag_df = pd.read_excel(INFO_XLSX, sheet_name=info_sheets['diagnoses'])
+    diagnoses = [str(x).strip() for x in diag_df.iloc[:, 0].dropna().tolist() if str(x).strip().lower() != 'diagnosis']
+else:
     diagnoses = []
 
-key_df = norm_cols(pd.read_excel(SRC, sheet_name=sheets.get('key2026', sheets.get('key_2026'))))
-key_markers = records(key_df)
+if 'studies' in info_sheets:
+    studies_df = norm_cols(pd.read_excel(INFO_XLSX, sheet_name=info_sheets['studies']))
+    studies = to_records(studies_df)
+else:
+    studies = []
 
-labs_df = norm_cols(pd.read_excel(SRC, sheet_name=sheets['labsfull']))
-if 'result' in labs_df.columns:
-    labs_df = labs_df[labs_df['result'].notna()]
-labs = records(labs_df)
+if 'therapy' in info_sheets:
+    th_df = norm_cols(pd.read_excel(INFO_XLSX, sheet_name=info_sheets['therapy']))
+    therapy = to_records(th_df)
+else:
+    therapy = []
 
-vitals = records(norm_cols(pd.read_excel(SRC, sheet_name=sheets['vitals'])))
-studies = records(norm_cols(pd.read_excel(SRC, sheet_name=sheets['studies'])))
-therapy = records(norm_cols(pd.read_excel(SRC, sheet_name=sheets['therapyplan'])))
+# --- patient_full.xlsx: единый лист data ---
+flat_df = pd.read_excel(DATA_XLSX, sheet_name='data')
+flat_df = norm_cols(flat_df)
 
-graphs = {}
-for lower, original in sheets.items():
-    if lower.startswith('graph'):
-        slug = re.sub(r'^graph_?', '', lower)
-        gdf = norm_cols(pd.read_excel(SRC, sheet_name=original))
-        cols = list(gdf.columns)
-        if len(cols) >= 2:
-            dcol, vcol = cols[0], cols[1]
-            rows = []
-            for _, r in gdf.iterrows():
-                d = clean(r.get(dcol))
-                v = clean(r.get(vcol))
-                if d is None or v is None:
-                    continue
-                rows.append({'date': d, 'value': v})
-            graphs[slug] = rows
+rename_map = {
+    'дата': 'date',
+    'группа': 'group',
+    'показатель': 'marker',
+    'значение': 'value',
+    'единица измерения': 'unit',
+    'референс': 'reference',
+    'комментарий': 'comment',
+}
+flat_df = flat_df.rename(columns=rename_map)
+
+for col in ['date','group','marker','value','unit','reference','comment']:
+    if col not in flat_df.columns:
+        flat_df[col] = None
+
+flat_df['marker'] = flat_df['marker'].astype(str).str.strip()
+flat_df['group'] = flat_df['group'].astype(str).str.strip()
+flat_df = flat_df[flat_df['marker'] != '']
+
+flat_df['value'] = flat_df['value'].apply(clean)
+flat_df['reference'] = flat_df['reference'].apply(clean)
+flat_df['comment'] = flat_df['comment'].apply(clean)
+
+rows = to_records(flat_df[['date','group','marker','value','unit','reference','comment']])
+
+groups = sorted({r['group'] for r in rows if r.get('group')})
+markers = sorted({r['marker'] for r in rows if r.get('marker')})
+
+series = {}
+for r in rows:
+    m = r.get('marker')
+    if not m:
+        continue
+    d = r.get('date')
+    v = r.get('value')
+    if d is None or v is None:
+        continue
+    series.setdefault(m, []).append({
+        'date': d,
+        'value': v,
+        'group': r.get('group'),
+        'unit': r.get('unit'),
+    })
 
 payload = {
-    'passport_raw': passport_items,
-    'passport': passport_map,
+    'passport_raw': passport_raw,
+    'passport': passport,
     'diagnoses': diagnoses,
-    'key_markers': key_markers,
-    'labs': labs,
-    'vitals': vitals,
     'studies': studies,
     'therapy': therapy,
-    'graphs': graphs,
-    'graph_names': sorted(graphs.keys())
+    'rows': rows,
+    'groups': groups,
+    'markers': markers,
+    'series': series,
 }
 
 (ASSETS / 'patient-data.json').write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding='utf-8')
