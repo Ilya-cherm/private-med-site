@@ -3,14 +3,10 @@ name: Build patient JSON
 on:
   push:
     paths:
-      - 'patient_data.xlsx'
-      - 'patient_info.xlsx'
-      - '.github/workflows/build-patient-json.yml'
+      - 'patient.xlsx'
       - 'scripts/build_patient_json.py'
+      - '.github/workflows/build-patient-json.yml'
   workflow_dispatch:
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
 
 permissions:
   contents: write
@@ -20,25 +16,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pandas openpyxl
+      - name: Install deps
+        run: pip install pandas openpyxl
 
-      - name: Build JSON files
+      - name: Build JSON
         run: python scripts/build_patient_json.py
 
-      - name: Commit generated files
+      - name: Commit generated assets
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add assets/data.json assets/info.json
-          git diff --cached --quiet || git commit -m "Auto-build patient JSON from Excel"
+          git add assets/patient-data.json
+          git diff --cached --quiet && exit 0
+          git commit -m "Update patient JSON"
           git push
