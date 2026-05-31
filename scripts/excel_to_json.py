@@ -20,25 +20,30 @@ for sheet_name, df in all_sheets.items():
         values = [clean(v) for v in row.tolist()]
         non_empty = [v for v in values if v]
 
-        if len(non_empty) < 3:
+        if len(non_empty) < 2:
             continue
 
-        date = non_empty[0]
-        marker = non_empty[1]
-        value = non_empty[2]
+        marker = non_empty[0]
+        value = non_empty[1]
+        unit = non_empty[2] if len(non_empty) > 2 else ""
+        comment = non_empty[3] if len(non_empty) > 3 else ""
 
-        if marker.lower() in ["пациент", "возраст", "пол", "дата рождения", "дата составления", "passport"]:
+        if marker.lower() in [
+            "пациент", "возраст", "пол", "дата рождения",
+            "дата составления", "passport", "цифровой регистр пациента",
+            "версия от"
+        ]:
             continue
 
         result.append({
             "patient": "Аноним",
-            "date": date,
+            "date": sheet_name,
             "marker": marker,
             "value": value,
-            "unit": non_empty[3] if len(non_empty) > 3 else "",
-            "refLow": non_empty[4] if len(non_empty) > 4 else "",
-            "refHigh": non_empty[5] if len(non_empty) > 5 else "",
-            "comment": non_empty[6] if len(non_empty) > 6 else "",
+            "unit": unit,
+            "refLow": "",
+            "refHigh": "",
+            "comment": comment,
             "sheet": sheet_name
         })
 
