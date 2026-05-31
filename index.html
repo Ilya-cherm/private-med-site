@@ -210,7 +210,7 @@
   <div class="wrap">
     <section class="hero">
       <h1>Аноним — медицинские показатели</h1>
-      <p>Графики динамики расположены вверху страницы. Все названия и значенич показателей отображаются на русском языке.</p>
+      <p>Графики динамики расположены вверху страницы. Все названия и значения показателей отображаются на русском языке.</p>
       <div class="stats">
         <div class="stat">
           <div class="stat-label">Пациент</div>
@@ -274,6 +274,33 @@
   </div>
 
   <script>
+    // Проверка пароля при загрузке
+    (function() {
+      const correctPassword = "alex2026";
+      let attempts = 0;
+      const maxAttempts = 3;
+
+      while (attempts < maxAttempts) {
+        const userPassword = prompt("Введите пароль для доступа к странице:");
+        
+        if (userPassword === null) {
+          document.body.innerHTML = "<div style='text-align:center;padding:50px;font-size:18px;color:#6b7280;'>Доступ отклонен.</div>";
+          throw new Error("Пароль не введен");
+        }
+
+        if (userPassword === correctPassword) {
+          break;
+        }
+
+        attempts++;
+        if (attempts >= maxAttempts) {
+          document.body.innerHTML = "<div style='text-align:center;padding:50px;font-size:18px;color:#d54c4c;'>Превышено число попыток. Доступ заблокирован.</div>";
+          throw new Error("Превышено число попыток ввода пароля");
+        }
+        alert("Неверный пароль. Попытка " + attempts + " из " + maxAttempts);
+      }
+    })();
+
     const labelsRu = {
       ALT: "АЛТ",
       AST: "АСТ",
@@ -293,9 +320,12 @@
       Ferritin: "Ферритин",
       HbA1c: "Гликированный гемоглобин",
       LDL: "ЛПНП",
+      ЛПНП: "ЛПНП",
       HDL: "ЛПВП",
+      ЛПВП: "ЛПВП",
       Triglycerides: "Триглицериды",
       Cholesterol: "Общий холестерин",
+      "Общий холестерин": "Общий холестерин",
       ESR: "СОЭ",
       WBC: "Лейкоциты",
       RBC: "Эритроциты",
@@ -344,9 +374,9 @@
       const comment = pick(row, ["comment", "Комментарий", "notes", "Note"]);
       const patient = pick(row, ["patient", "Пациент", "ФИО", "namePatient"]);
 
-      const value = Number(String(valueRaw).replace(",", "."));
-      const refLow = refLowRaw === "" ? null : Number(String(refLowRaw).replace(",", "."));
-      const refHigh = refHighRaw === "" ? null : Number(String(refHighRaw).replace(",", "."));
+      const value = parseFloat(String(valueRaw).replace(/\s/g, "").replace(",", "."));
+      const refLow = refLowRaw === "" ? null : parseFloat(String(refLowRaw).replace(/\s/g, "").replace(",", "."));
+      const refHigh = refHighRaw === "" ? null : parseFloat(String(refHighRaw).replace(/\s/g, "").replace(",", "."));
 
       return {
         patient: patient ? "Аноним" : "Аноним",
