@@ -1,0 +1,36 @@
+name: Build patient JSON
+
+on:
+  push:
+    paths:
+      - 'patient_data.xlsx'
+      - 'patient_info.xlsx'
+      - '.github/workflows/build-patient-json.yml'
+      - 'scripts/build_patient_json.py'
+  workflow_dispatch:
+
+jobs:
+  build-json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas openpyxl
+
+      - name: Build JSON files
+        run: python scripts/build_patient_json.py
+
+      - name: Commit generated files
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'Auto-build patient JSON from Excel'
+          file_pattern: 'assets/data.json assets/info.json'
