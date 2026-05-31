@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Закрытый мед-регистр</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root{--bg:#f7f6f2;--surface:#ffffff;--surface2:#f1efe9;--text:#222;--muted:#666;--line:#ddd7cf;--primary:#01696f;--primary2:#0c4e54;--danger:#a12c7b;--radius:16px;--shadow:0 10px 30px rgba(0,0,0,.08)}
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,sans-serif;background:var(--bg);color:var(--text)}
+    .hidden{display:none!important}.app{min-height:100vh}.center{display:grid;place-items:center;min-height:100vh;padding:24px}
+    .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .login{width:min(460px,100%);padding:28px}.logo{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+    .logo svg{width:38px;height:38px;color:var(--primary)} h1{font-size:28px;margin:0 0 6px} p{color:var(--muted)}
+    input,select,button{font:inherit} input,select{width:100%;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;margin:8px 0 14px}
+    button{border:0;border-radius:12px;padding:14px 16px;background:var(--primary);color:#fff;font-weight:600;cursor:pointer} button:hover{background:var(--primary2)}
+    .error{color:var(--danger);min-height:22px}.topbar{position:sticky;top:0;z-index:10;background:rgba(247,246,242,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .topbar-inner{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;gap:12px}.wrap{max-width:1200px;margin:0 auto;padding:20px}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.panel{padding:18px}.span-3{grid-column:span 3}.span-4{grid-column:span 4}.span-6{grid-column:span 6}.span-8{grid-column:span 8}.span-12{grid-column:span 12}
+    .metric{font-size:13px;color:var(--muted);margin-bottom:10px}.value{font-size:30px;font-weight:700}.small{font-size:12px;color:var(--muted)}
+    table{width:100%;border-collapse:collapse} th,td{text-align:left;padding:10px;border-bottom:1px solid var(--line);vertical-align:top} th{font-size:12px;color:var(--muted);font-weight:600}
+    .filters{display:flex;gap:12px;flex-wrap:wrap}.filters>*{flex:1 1 220px}.badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#dcebea;color:#13484b;font-size:12px;font-weight:600}
+    @media (max-width:900px){.span-3,.span-4,.span-6,.span-8,.span-12{grid-column:span 12}.wrap{padding:14px}.topbar-inner{padding:12px 14px}}
+  </style>
+</head>
+<body>
+<div class="app" id="loginView">
+  <div class="center">
+    <div class="card login">
+      <div class="logo">
+        <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" aria-label="Логотип"><path d="M12 32c0-11 9-20 20-20s20 9 20 20-9 20-20 20S12 43 12 32Z"/><path d="M32 18v28M18 32h28"/></svg>
+        <div><h1>Закрытый мед-регистр</h1><p>Доступ по паролю к анализам, динамике и исследованиям.</p></div>
+      </div>
+      <label>Пароль</label>
+      <input id="passwordInput" type="password" placeholder="Введите пароль" />
+      <button id="loginBtn">Войти</button>
+      <div class="error" id="loginError"></div>
+      <p class="small">Текущий пароль по умолчанию: <b>Med2026!</b>. Перед публикацией обязательно поменяйте его в файле <code>app.html</code>.</p>
+    </div>
+  </div>
+</div>
+<div class="app hidden" id="mainView">
+  <div class="topbar"><div class="topbar-inner wrap"><div><strong>Мед-регистр пациента</strong><div class="small">Лаборатория, графики, исследования, лечение</div></div><button id="logoutBtn">Выйти</button></div></div>
+  <main class="wrap">
+    <div class="grid" id="summaryGrid"></div>
+    <div class="grid" style="margin-top:16px">
+      <section class="card panel span-8"><div class="filters"><input id="searchInput" placeholder="Поиск по анализу или разделу"><select id="sheetSelect"></select></div><div id="tableWrap" style="margin-top:12px;overflow:auto"></div></section>
+      <section class="card panel span-4"><h3 style="margin-top:0">Диагнозы</h3><div id="diagnosesList"></div></section>
+      <section class="card panel span-12"><h3 style="margin-top:0">График</h3><select id="chartSelect" style="max-width:360px"></select><canvas id="trendChart" height="110"></canvas></section>
+      <section class="card panel span-6"><h3 style="margin-top:0">Исследования</h3><div id="studiesWrap"></div></section>
+      <section class="card panel span-6"><h3 style="margin-top:0">Терапия</h3><div id="therapyWrap"></div></section>
+    </div>
+  </main>
+</div>
+<script>
+const APP_PASSWORD = 'Med2026!';
+let DATA = {}; let chart;
+const loginView = document.getElementById('loginView');
+const mainView = document.getElementById('mainView');
+function login(){ const val = document.getElementById('passwordInput').value; if(val===APP_PASSWORD){ loginView.classList.add('hidden'); mainView.classList.remove('hidden'); } else { document.getElementById('loginError').textContent = 'Неверный пароль'; } }
+function logout(){ mainView.classList.add('hidden'); loginView.classList.remove('hidden'); document.getElementById('passwordInput').value=''; }
+document.getElementById('loginBtn').onclick=login; document.getElementById('logoutBtn').onclick=logout; document.getElementById('passwordInput').addEventListener('keydown',e=>{ if(e.key==='Enter') login(); });
+async function init(){ DATA = await fetch('./assets/data.json').then(r=>r.json()); buildSummary(); buildSelects(); renderDiagnoses(); renderStudies(); renderTherapy(); renderTable(); renderChart(); }
+function card(title,value,sub=''){ return `<section class="card panel span-3"><div class="metric">${title}</div><div class="value">${value}</div><div class="small">${sub}</div></section>` }
+function findMetric(name){ const rows = DATA.key_2026 || []; return rows.find(r => (r.marker||'').toLowerCase().includes(name.toLowerCase())); }
+function buildSummary(){ const hba1c=findMetric('hba1c'); const ldl=findMetric('лпнп'); const crp=findMetric('crp'); const bmi=findMetric('имт'); document.getElementById('summaryGrid').innerHTML = [card('HbA1c', hba1c?`${hba1c.result} ${hba1c.unit}`:'—', hba1c?.comment||''), card('ЛПНП', ldl?`${ldl.result} ${ldl.unit}`:'—', ldl?.comment||''), card('hs-CRP', crp?`${crp.result} ${crp.unit}`:'—', crp?.comment||''), card('ИМТ', bmi?`${bmi.result} ${bmi.unit}`:'—', bmi?.comment||'')].join(''); }
+function buildSelects(){ const sheets = Object.keys(DATA).filter(k => Array.isArray(DATA[k]) && DATA[k].length); const sel = document.getElementById('sheetSelect'); sel.innerHTML = sheets.map(s=>`<option value="${s}">${s}</option>`).join(''); const chartSheets = sheets.filter(s=>s.startsWith('graph_')); const csel = document.getElementById('chartSelect'); csel.innerHTML = chartSheets.map(s=>`<option value="${s}">${s.replace('graph_','').replaceAll('_',' ')}</option>`).join(''); sel.value = sheets.includes('labs_full') ? 'labs_full' : sheets[0]; csel.value = chartSheets.includes('graph_hba1c') ? 'graph_hba1c' : chartSheets[0]; sel.onchange = renderTable; csel.onchange = renderChart; document.getElementById('searchInput').oninput = renderTable; }
+function renderTable(){ const sheet = document.getElementById('sheetSelect').value; const query = document.getElementById('searchInput').value.toLowerCase().trim(); let rows = DATA[sheet] || []; if(query){ rows = rows.filter(row => Object.values(row).some(v => String(v).toLowerCase().includes(query))); } const cols = rows.length ? Object.keys(rows[0]) : []; const head = `<thead><tr>${cols.map(c=>`<th>${c}</th>`).join('')}</tr></thead>`; const body = `<tbody>${rows.slice(0,300).map(r=>`<tr>${cols.map(c=>`<td>${r[c]}</td>`).join('')}</tr>`).join('')}</tbody>`; document.getElementById('tableWrap').innerHTML = rows.length ? `<table>${head}${body}</table>` : '<p>Нет данных.</p>'; }
+function renderDiagnoses(){ const rows = DATA.diagnoses || []; document.getElementById('diagnosesList').innerHTML = rows.map(r=>`<div style="padding:10px 0;border-bottom:1px solid var(--line)"><span class="badge">Диагноз</span><div style="margin-top:8px">${r.diagnosis || Object.values(r)[0] || ''}</div></div>`).join(''); }
+function renderStudies(){ const rows = (DATA.studies || []).slice(0,50); document.getElementById('studiesWrap').innerHTML = rows.map(r=>`<div style="padding:10px 0;border-bottom:1px solid var(--line)"><strong>${r.date || ''}</strong> — ${r.study || ''}<div class="small">${r.area || ''}</div><div>${r.conclusion || ''}</div></div>`).join(''); }
+function renderTherapy(){ const rows = DATA.therapy_plan || []; document.getElementById('therapyWrap').innerHTML = rows.map(r=>`<div style="padding:10px 0;border-bottom:1px solid var(--line)"><strong>${r.date || ''}</strong> — ${r.intervention || ''}<div class="small">${r.dose || ''} ${r.schedule || ''}</div><div>${r.comment || ''}</div></div>`).join(''); }
+function renderChart(){ const sheet = document.getElementById('chartSelect').value; const rows = DATA[sheet] || []; const labels = rows.map(r=>r.date); const values = rows.map(r=>Number(r.value)); const ctx = document.getElementById('trendChart'); if(chart) chart.destroy(); chart = new Chart(ctx,{type:'line',data:{labels,datasets:[{label:sheet.replace('graph_',''),data:values,borderColor:'#01696f',backgroundColor:'rgba(1,105,111,.14)',fill:true,tension:.28,pointRadius:4}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{y:{beginAtZero:false}}}}); }
+init();
+</script>
+</body>
+</html>
