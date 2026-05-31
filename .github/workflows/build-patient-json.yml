@@ -3,7 +3,8 @@ name: Build patient JSON
 on:
   push:
     paths:
-      - 'patient.xlsx'
+      - 'patient_data.xlsx'
+      - 'patient_full.xlsx'
       - 'scripts/build_patient_json.py'
       - '.github/workflows/build-patient-json.yml'
   workflow_dispatch:
